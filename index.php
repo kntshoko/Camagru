@@ -1,47 +1,77 @@
 
-<HTML>
-    <HEAD>
-        <STYLE>
-        
-            BODY
-            {
-                TEXT-ALIGN : CENTER;
-                BACKGROUND-COLOR : LIGHTBLUE;
-                DISPLAY : INLINE;
+<html>
+    <head>
+        <style>
+            body{
+                text-align : center;
+                font-family : Arial, Helvetica, sans-serif;
+                background-color: rgb(250,200,150) ;
             }
-            H1
-            {
-                COLOR : RED; 
+            form{
+                border : 3px solid #f1f1f1;
+                background-color: white;
             }
-            .signup
-            {
-                TEXT-ALIGN : CENTER;
-                BACKGROUND-COLOR : POWDERBLUE;
-                POSITION : ABSOLUTE;
-                WIDTH : 30%;
-                HEIGHT : 50%;
-                TOP : 20%;
-                LEFT : 40%;
+            input[type=text], input[type=password]{
+                width : 60%;
+                padding : 12px 20px;
+                margin : 8px 0;
+                display : inline-block;
+                border : 1px solid #ccc;
+                box-sizing : border-box;
             }
-            FORM
-            {
-                POSITION : ABSOLUTE;
+            input[type=submit]{
+                width : 30%;
+                padding : 10px 18px;
+                margin : 8px 0;
+                display : inline-block;
+                border : 1px solid #ccc;
+                box-sizing : border-box;
+                background-color : #847ef7;
             }
-        </STYLE>
-    </HEAD>
-    <BODY>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <H1>CAMAGRU</H1>
-        <div CLASS = "signup">
-            <FORM name = "index.php" method = "GET">
-                login:<BR> <input type = "text" name = "login"><BR>
-                password<BR> <input type = "Password" name = "passwd">
-            </FORM>
-            <BR>
-            <BR> <BR> <BR> <BR>
-            <P>SIGN UP? FORGOT PASSWORD?</P>
-        </div>
-    </BODY>
-</HTML>
+            .imgcon{
+                text-align :center;
+                margin : 24px 0 12px 0;
+            }
+            img.limg{
+                width : 40%;
+                border : 1px solid #f1f1f1;
+                border-radius : 50%;
+            }
+            .container{
+                padding : 16px;
+            }
+            .cl{
+            position :absolute;
+            left : 30%;
+            height : 60%;
+            width : 40%;
+        }
+        </style>
+    </head>
+    <body>
+    <h1 align = center>
+            CAMAGRU
+    </h1>
+    <div class = "cl">
+
+            <h2>
+                LOGIN FORM
+            </h2>
+            <form action="index.php" methord ="post">
+                 <div class="imgcon">
+                 <img src="image.png" alt = "limg" class ="limg">
+                 </div>   
+                 <div class = "con">
+                        User Name:<br> <input type="text" name = "user_name"/><br><br>
+                        Password:<br> <input type="password" name = "password"/><br><br> 
+                        <input type="submit" name = "Submit" value = "LOGIN"/>
+                 </div>
+                 <div class = "con">
+                   <a href="registration.php">Register New Account</a>
+                 </div>
+            </form>
+      </div>      
+    </body>
+</html>
 <?php
 ?>
