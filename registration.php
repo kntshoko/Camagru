@@ -1,3 +1,48 @@
+<?php
+    $mg = "";
+    if (isset($_POST['submit']))
+    {
+        require_once("config.php"); 
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $conpasword = $_POST['conpassword']; 
+        if ($firstname == null || $lastname == null || $email == null || $username == null || $conpasword != $password)
+        {
+            $mg = "check your inputs";
+        }
+        else
+        {
+                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$username' OR `email` = '$email' LIMIT 1");
+                $sql->execute();
+                $row = $sql->fetch();
+                if (empty($row) == true)
+                {
+                    $token = substr(str_shuffle($firstname.$lastname."123456789".
+                    "MNBVCXZASDFGHJKL"),0,10);
+                    $sql = $conn->prepare("INSERT INTO users (`firstname`,`lastname`,`user_name`,`email`,`password`,`token`) 
+                    VALUES (?,?,?,?,?,?)"); 
+                    $sql->execute([$firstname,$lastname,$username,$email,md5($password),$token]);
+                    $to = $email;
+                    $subject = "CAMAGRU email comfermation";
+                    $message = "click on the link below<br><a href ='http://localhost:8081/untitled%20folder/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
+                    $headers = 'From: nonreply'."\r\n";
+                    $headers .= "MIME-Version: 1.0"."\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+                    mail($to,$subject,$message,$headers);
+                    $mg ="mail sent check your mailbox";
+                   
+                }
+                else
+                {
+                    $mg = "user account already exists";
+                }
+            }   
+        $conn = NULL;
+    }
+?>
 <HTML>
     <HEAD>
         <STYLE>
@@ -83,9 +128,9 @@
                     <br>
                     <input type="password" name = "password" />
                     <br><br>
-                    comform Password : 
+                    confirm Password : 
                     <br>
-                    <input type="password" name = "compassword" />
+                    <input type="password" name = "conpassword" />
                     <br><br>
                     <br>
                     <input type="submit" name = "submit" value = "register"/>
@@ -95,35 +140,3 @@
             </div>
     </BODY>
 </HTML>
-<?php
-    $mg = "";
-    if (isset($_POST['submit']))
-    {
-        require_once("config.php"); 
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $compasword = $_POST['compassword'];
-        if ($firstname == "" || $lastname == "" || $email == "" || $username == "" || $compasword != $password)
-            $mg = "check your inputs";
-            else{
-                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= $username LIMIT 1");
-                $sql->execute([1]);
-                //$row = $sql->fetch();
-                if ($sql->num_rows > 0)
-                {
-                    $mg = "username already exists";
-                }
-                else{
-                    
-                }
-            }
-                
-                $sql = $conn->prepare("INSERT INTO users (`firstname`,`lastname`,`user_name`,`email`,`password`) 
-                VALUES (?,?,?,?,?)"); 
-                $sql->execute([$firstname,$lastname,$username,$email,$password]);
-                $conn = NULL;
-    }
-?>
