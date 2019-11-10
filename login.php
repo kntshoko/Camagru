@@ -41,14 +41,36 @@
     <head>
         <style>
             body{
-                text-align : center;
-                font-family : Arial, Helvetica, sans-serif;
-                background-color: rgb(250,200,150) ;
+                font-family: Arial, Helvetica, sans-serif;
             }
             form{
-                border : 3px solid #f1f1f1;
-                background-color: white;
+                background-color: #333;
+                text-align : center;
             }
+            .cll {
+            overflow: hidden;
+            background-color: #333;
+            }
+            .cll a:hover{
+            background-color: red;
+            }
+            .cll a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+            .cl label  
+            {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+
             input[type=text], input[type=password]{
                 width : 60%;
                 padding : 12px 20px;
@@ -64,6 +86,7 @@
                 display : inline-block;
                 border : 1px solid #ccc;
                 box-sizing : border-box;
+                color: white;
                 background-color : #847ef7;
             }
             .imgcon{
@@ -84,18 +107,25 @@
             height : 60%;
             width : 40%;
         }
+        h2{
+            color: white; 
+            font-family: inherit;
+        }
         </style>
     </head>
     <body>
+    <div class = "cll">
+            <a href="index.php">Go To Welcome</a>
+            <a href="registration.php">Register Account</a>
+            <a href="registration.php">Forgot Password</a>
+        </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
     <div class = "cl">
-
-            <h2>
-                LOGIN FORM
-            </h2>
+        
             <form action="login.php" method ="post">
+            <h2>LOGIN FORM</h2>
                  <div class="imgcon">
                  <img src="image.png" alt = "limg" class ="limg">
                  </div>   
@@ -104,13 +134,9 @@
                     echo $mg . "<br>";
                 ?>
                  <div class = "con">
-                        User Name or Email:<br> <input type="text" name = "login"/><br><br>
-                        Password:<br> <input type="password" name = "password"/><br><br> 
+                       <label for="login">User Name or Email:</label> <br> <input type="text" name = "login"/><br><br>
+                       <label for="password">Password:</label> <br> <input type="password" name = "password"/><br><br> 
                         <input type="submit" name = "logedin" value = "login"/>
-                 </div>
-                 <div class = "con">
-                   <a href="registration.php">Register Account</a>
-                   <a href="registration.php">Forgot Password</a>
                  </div>
             </form>
       </div>      

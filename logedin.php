@@ -6,12 +6,12 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .navbar {
+        .cl {
             overflow: hidden;
             background-color: #333;
         }
 
-        .navbar a {
+        .cl a {
             float: left;
             font-size: 16px;
             color: white;
@@ -20,12 +20,12 @@
             text-decoration: none;
         }
 
-        .dropdown {
+        .drop {
             float: left;
             overflow: hidden;
         }
 
-        .dropdown .dropbtn {
+        .drop .setbtn {
             font-size: 16px;  
             border: none;
             outline: none;
@@ -36,11 +36,11 @@
             margin: 0;
         }
 
-        .navbar a:hover, .dropdown:hover .dropbtn {
+        .cl a:hover, .drop:hover .setbtn {
             background-color: red;
         }
 
-        .dropdown-content {
+        .cont {
             display: none;
             position: absolute;
             background-color: #f9f9f9;
@@ -49,7 +49,7 @@
             z-index: 1;
         }
 
-        .dropdown-content a {
+        .cont a {
             float: none;
             color: black;
             padding: 12px 16px;
@@ -58,11 +58,11 @@
             text-align: left;
         }
 
-        .dropdown-content a:hover {
+        .cont a:hover {
              background-color: #ddd;
         }
 
-        .dropdown:hover .dropdown-content {
+        .drop:hover .cont {
             display: block;
         }
         .main
@@ -76,24 +76,23 @@
     </style>
 </head>
 <body>
-<div class="navbar">
-    <a href="#">GALLARY</a>
-  <div class="dropdown">
-    <button class="dropbtn">SETTINGS
-    </button>
-    <div class="dropdown-content">
-      <a href="changepassword.php">change password</a>
-      <a href="preferences.php">preferences</a>
-      <a href="deleteaccount.php">Delete account</a>
-    </div>
-  </div> 
-  <a href="#">LOGOUT</a>
-</div>  
-<h1 align = center>
+    <div class="cl">
+        <a href="#">GALLARY</a>
+        <div class="drop">
+            <button class="setbtn">SETTINGS</button>
+            <div class="cont">
+                <a href="changepassword.php">change password</a>
+                <a href="preferences.php">preferences</a>
+                <a href="deleteaccount.php">Delete account</a>
+            </div>
+        </div> 
+        <a href="#">LOGOUT</a>
+    </div>  
+    <h1 align = center>
             CAMAGRU
-</h1>   
-<div class = "main">
-stuffffffffffffa
-</div>
+    </h1>   
+    <div class = "main">
+        stuffffffffffffa
+    </div>
 </body>
 </html>
