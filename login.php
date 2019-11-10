@@ -1,3 +1,42 @@
+<?php
+    $mg = "";
+    if (isset($_POST['logedin']))
+    {
+        require_once("config.php");
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        if($password == NULL || $login == NULL)
+        {
+            $mg = "fill in all the boxes";
+        }
+        else
+        {
+            $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
+            $sql->execute();
+            $row = $sql->fetch();
+            if (empty($row) == true)
+            {
+                $mg = "account does not exist";
+            }
+            else
+            {
+                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' AND `password` = ?  LIMIT 1");
+                $sql->execute(md5($password));
+                $row = $sql->fetch();
+                if (empty($row) == true)
+                {
+                    $mg = "Email/username/password incorrect ";
+                }
+                else
+                {
+                    header('logedin.php');
+                    exit();
+                }
+            }
+        }
+    }
+?>
+
 <html>
     <head>
         <style>
@@ -56,14 +95,18 @@
             <h2>
                 LOGIN FORM
             </h2>
-            <form action="index.php" methord ="post">
+            <form action="login.php" method ="post">
                  <div class="imgcon">
                  <img src="image.png" alt = "limg" class ="limg">
                  </div>   
+                 <?php 
+                    if($mg != "")
+                    echo $mg . "<br>";
+                ?>
                  <div class = "con">
-                        User Name:<br> <input type="text" name = "user_name"/><br><br>
+                        User Name or Email:<br> <input type="text" name = "login"/><br><br>
                         Password:<br> <input type="password" name = "password"/><br><br> 
-                        <input type="submit" name = "Submit" value = "LOGIN"/>
+                        <input type="submit" name = "logedin" value = "login"/>
                  </div>
                  <div class = "con">
                    <a href="registration.php">Register Account</a>
@@ -73,5 +116,3 @@
       </div>      
     </body>
 </html>
-<?php
-?>

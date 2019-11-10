@@ -65,6 +65,14 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .main
+        {
+            top: 40%;
+            width: 90%;
+            padding : 5%;
+            height : 60%;
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
@@ -74,9 +82,9 @@
     <button class="dropbtn">SETTINGS
     </button>
     <div class="dropdown-content">
-      <a href="#">chenge password</a>
-      <a href="#">preferences</a>
-      <a href="#">Delete account</a>
+      <a href="changepassword.php">change password</a>
+      <a href="preferences.php">preferences</a>
+      <a href="deleteaccount.php">Delete account</a>
     </div>
   </div> 
   <a href="#">LOGOUT</a>
