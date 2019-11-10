@@ -1,15 +1,37 @@
-<HTML>
-    <HEAD>
-        <STYLE>
+<html>
+    <head>
+        <style>
             body{
-                text-align : center;
-                font-family : Arial, Helvetica, sans-serif;
-                background-color: rgb(250,200,150) ;
+                font-family: Arial, Helvetica, sans-serif;
             }
             form{
-                border : 3px solid #f1f1f1;
-                background-color: white;
+                background-color: #333;
+                text-align : center;
             }
+            .cll {
+            overflow: hidden;
+            background-color: #333;
+            }
+            .cll a:hover{
+            background-color: red;
+            }
+            .cll a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+            .cl label  
+            {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+
             input[type=text], input[type=password]{
                 width : 60%;
                 padding : 12px 20px;
@@ -25,11 +47,12 @@
                 display : inline-block;
                 border : 1px solid #ccc;
                 box-sizing : border-box;
+                color: white;
                 background-color : #847ef7;
             }
             .imgcon{
                 text-align :center;
-                margin : 22px 0 12px 0;
+                margin : 24px 0 12px 0;
             }
             img.limg{
                 width : 40%;
@@ -45,18 +68,24 @@
             height : 60%;
             width : 40%;
         }
-        </STYLE>
-    </HEAD>
-    <BODY>      
-        <h1 align = center>
+        h2{
+            color: white; 
+            font-family: inherit;
+        }
+        </style>
+    </head>
+    <body>
+        <div class = "cll">
+            <a href="logedin.php">Go To Home</a>
+        </div>      
+    <h1 align = center>
             CAMAGRU
     </h1>
     <div class = "cl">
-            <h2>
-               DELETE ACCOUNT FORM
-            </h2>
-            <form action="deleteaccount.php" method ="post">
-                 <div class="imgcon">
+        
+            <form action="perferences.php" method ="post">
+            <h2>DELETE ACCOUNT FORM</h2>
+            <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
                  </div>   
                  <?php 
@@ -64,15 +93,14 @@
                     echo $mg . "<br>";
                 ?>
                  <div class = "con">
-
-                    Enter Password : 
+                    <label for="email">Enter Password  </label>  
                     <br>
-                    <input type="text" name = "username" />
+                    <input type="password" name = "password" />
                     <br><br>
-                    <input type="submit" name = "submit" value = "submit"/>
+                    <input type="submit" name = "submit" value = "register"/>
                     <br><br>
                 </div>
-            </form> 
-            </div>
-    </BODY>
-</HTML>
+            </form>
+      </div>      
+    </body>
+</html>

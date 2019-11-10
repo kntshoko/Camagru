@@ -78,14 +78,14 @@
     </head>
     <body>
         <div class = "cll">
-            <a href="index.php">Go To Home</a>
+            <a href="logedin.php">Go To Home</a>
         </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
     <div class = "cl">
         
-            <form action="registration.php" method ="post">
+            <form action="changepassword.php" method ="post">
             <h2>CHANGE PASSWORD FORM</h2>
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
