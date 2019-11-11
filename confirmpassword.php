@@ -1,16 +1,31 @@
 <?php
+    $mg = "";
     if (isset($_POST['submit']))
     {
-        $email = $_GET['email'];
-        $token = $_GET['token'];
-        require_once("config.php");
-        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
-        $sql->execute([md5()]); 
-        $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
-        $sql->execute([""]); 
-        $conn = NULL;
-        header('Location: login.php');
-        exit();
+        if ( $_POST['conpassword'] == null || $_POST['newpassword'] == null)
+        {
+            $mg = "check your input";
+        }
+        else
+        {
+            if ( $_POST['conpassword'] == $_POST['newpassword'] )
+            {
+                $email = $_GET['email'];
+            $token = $_GET['token'];
+            require_once("config.php");
+            $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
+            $sql->execute([md5()]); 
+            $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
+            $sql->execute([""]); 
+            $conn = NULL;
+            header('Location: login.php');
+            exit();
+            }
+            else
+            {
+                $mg = "Passsword do not match";
+            }
+        }
     }
 ?>
 
@@ -70,7 +85,7 @@
                 text-align :center;
                 margin : 24px 0 12px 0;
             }
-            img.limg{
+            img .limg{
                 width : 40%;
                 border : 1px solid #f1f1f1;
                 border-radius : 50%;

@@ -118,7 +118,7 @@ if (isset($_POST['submit']))
     </head>
     <body>
         <div class = "cll">
-            <a href="logedin.php">Go To Home</a>
+            <a href="login.php">Go To Login</a>
         </div>      
     <h1 align = center>
             CAMAGRU
