@@ -1,4 +1,11 @@
 
+<?php
+    
+    $_SESSION['password'] = md5($_POST[""]);
+    header('Location: logedin.php');
+    exit();
+?>
+
 
 <html>
     <head>
@@ -95,13 +102,13 @@
                     echo $mg . "<br>";
                 ?>
                  <div class = "con">
-                    <label for="email">Current Password:  </label>  
+                    <label for="password">Current Password:  </label>  
                     <br>
-                    <input type="text" name = "email" />
+                    <input type="password" name = "currentpassword" />
                     <br><br>
-                    <label for="password"> New Password : </label> 
+                    <label for="newpassword"> New Password : </label> 
                     <br>
-                    <input type="password" name = "password" />
+                    <input type="password" name = "newpassword" />
                     <br><br>
                     <label for="conpassword">Confirm New Password :  </label>   
                     <br>

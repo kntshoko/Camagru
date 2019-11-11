@@ -7,6 +7,8 @@
         require_once("config.php");
         $sql = $conn->prepare("UPDATE users SET account = ?  WHERE `email` = '$email' AND `user_name` = '$username' AND token = '$token'");
         $sql->execute([1]); 
+        $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email' AND `user_name` = '$username' AND token = '$token'");
+        $sql->execute([""]); 
         $conn = NULL;
     }
 ?>

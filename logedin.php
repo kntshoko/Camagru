@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    $_SESSION['login'] = $_POST['login'];
+    $_SESSION['password'] = md5($_POST['password']);
+?>
 <html>
 <head>
     <title>Document</title>
@@ -86,7 +91,7 @@
                 <a href="deleteaccount.php">Delete account</a>
             </div>
         </div> 
-        <a href="#">LOGOUT</a>
+        <a href="logout.php">LOGOUT</a>
     </div>  
     <h1 align = center>
             CAMAGRU
