@@ -20,7 +20,7 @@
             }
             else
             {
-                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' AND `password` = ?  LIMIT 1");
+                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' AND `password` = ? OR `email` = '$login' AND `password` = ?  LIMIT 1");
                 $sql->execute([md5($password)]);
                 $row = $sql->fetch();
                 if (empty($row) == true)
@@ -29,8 +29,8 @@
                 }
                 else
                 {
-                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' OR `email` = '$login' AND `account` = 1 LIMIT 1");
-                    $sql->execute();
+                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = ? OR `email` = '$login' AND `account` = ? LIMIT 1");
+                    $sql->execute(1);
                     $row = $sql->fetch();
                     if (empty($row) == true)
                     {
