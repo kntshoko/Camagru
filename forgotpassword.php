@@ -17,7 +17,7 @@ if (isset($_POST['submit']))
                 $token = substr(str_shuffle($firstname.$lastname."123456789".
                 "MNBVCXZASDFGHJKL"),0,10);
                 $sql = $conn->prepare("INSERT INTO users (`token`) 
-                VALUES (?,?,?,?,?,?)"); 
+                VALUES (?)"); 
                 $sql->execute([$token]);
                 $to = $email;
                 $subject = "CAMAGRU Password recreation";

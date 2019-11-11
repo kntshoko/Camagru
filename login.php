@@ -21,16 +21,26 @@
             else
             {
                 $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' AND `password` = ?  LIMIT 1");
-                $sql->execute(md5($password));
+                $sql->execute([md5($password)]);
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    $mg = "Email/username/password incorrect ";
+                    $mg = "check inputs";
                 }
                 else
                 {
-                    header('logedin.php');
-                    exit();
+                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' OR `email` = '$login' AND `account` = 1 LIMIT 1");
+                    $sql->execute();
+                    $row = $sql->fetch();
+                    if (empty($row) == true)
+                    {
+                        $mg = "account not activeted please check your email";
+                    }
+                    else
+                    {
+                        header('Location: logedin.php');
+                        exit();
+                    }
                 }
             }
         }
