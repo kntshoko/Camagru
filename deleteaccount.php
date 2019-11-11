@@ -1,5 +1,5 @@
 <?php
-        
+
         session_unset();
         session_destroy();
         header('Location: index.php');
@@ -96,10 +96,12 @@
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
                  </div>   
-                 <?php 
-                    if($mg != "")
-                    echo $mg . "<br>";
-                ?>
+                  <h2> 
+                    <?php 
+                        if($mg != "")
+                     echo $mg . "<br>";
+                     ?>
+                </h2>
                  <div class = "con">
                     <label for="email">Enter Password  </label>  
                     <br>

@@ -1,39 +1,16 @@
 <?php
-    $mg = "";
-    if (isset($_POST['logedin']))
+    if (isset($_POST['submit']))
     {
+        $email = $_GET['email'];
+        $token = $_GET['token'];
         require_once("config.php");
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        if($password == NULL || $login == NULL)
-        {
-            $mg = "fill in all the boxes";
-        }
-        else
-        {
-            $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
-            $sql->execute();
-            $row = $sql->fetch();
-            if (empty($row) == true)
-            {
-                $mg = "account does not exist";
-            }
-            else
-            {
-                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' AND `password` = ?  LIMIT 1");
-                $sql->execute(md5($password));
-                $row = $sql->fetch();
-                if (empty($row) == true)
-                {
-                    $mg = "Email/username/password incorrect ";
-                }
-                else
-                {
-                    header('logedin.php');
-                    exit();
-                }
-            }
-        }
+        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
+        $sql->execute([md5()]); 
+        $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
+        $sql->execute([""]); 
+        $conn = NULL;
+        header('Location: login.php');
+        exit();
     }
 ?>
 
@@ -114,20 +91,18 @@
         </style>
     </head>
     <body>
-    <div class = "cll">
-            <a href="index.php">Go To Welcome</a>
-            <a href="registration.php">Register Account</a>
-            <a href="forgotpassword.php">Forgot Password</a>
+        <div class = "cll">
+            <a href="login.php">Go To Home</a>
         </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
     <div class = "cl">
         
-            <form action="login.php" method ="post">
-            <h2>LOGIN FORM</h2>
-                 <div class="imgcon">
-                 <img src="image.png" alt = "limg" class ="limg">
+            <form action="confirmpassword.php" method ="post">
+            <h2>CONFIRM PASSWORD FORM</h2>
+            <div class="imgcon">
+                     <img src="image.png" alt = "limg" class ="limg">
                  </div>   
                  <h2> 
                     <?php 
@@ -136,10 +111,18 @@
                      ?>
                 </h2>
                  <div class = "con">
-                       <label for="login">User Name or Email:</label> <br> <input type="text" name = "login"/><br><br>
-                       <label for="password">Password:</label> <br> <input type="password" name = "password"/><br><br> 
-                        <input type="submit" name = "logedin" value = "login"/>
-                 </div>
+                    <label for="newpassword"> New Password : </label> 
+                    <br>
+                    <input type="password" name = "newpassword" />
+                    <br><br>
+                    <label for="conpassword">Confirm New Password :  </label>   
+                    <br>
+                    <input type="password" name = "conpassword" />
+                    <br><br>
+                    <br>
+                    <input type="submit" name = "submit" value = "register"/>
+                    <br><br>
+                </div>
             </form>
       </div>      
     </body>

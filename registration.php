@@ -136,10 +136,12 @@
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
                  </div>   
-                 <?php 
-                    if($mg != "")
-                    echo $mg . "<br>";
-                ?>
+                 <h2> 
+                    <?php 
+                        if($mg != "")
+                     echo $mg . "<br>";
+                     ?>
+                </h2>
                  <div class = "con">
                   <label for="firstrname">First Name :</label>   <br>
                     <input type="text" name = "firstname" />

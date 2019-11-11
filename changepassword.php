@@ -97,10 +97,12 @@
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
                  </div>   
-                 <?php 
-                    if($mg != "")
-                    echo $mg . "<br>";
-                ?>
+                 <h2> 
+                    <?php 
+                        if($mg != "")
+                     echo $mg . "<br>";
+                     ?>
+                </h2>
                  <div class = "con">
                     <label for="password">Current Password:  </label>  
                     <br>
