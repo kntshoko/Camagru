@@ -14,7 +14,7 @@
             $token = $_GET['token'];
             require_once("config.php");
             $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
-            $sql->execute([md5()]); 
+            $sql->execute([md5($_POST['conpassword'])]); 
             $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
             $sql->execute([""]); 
             $conn = NULL;

@@ -1,49 +1,61 @@
 <?php
     $mg = "";
-    if (isset($_POST['logedin']))
+    if (session_id() == '')
     {
-        require_once("config.php");
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        if($password == NULL || $login == NULL)
+        if (isset($_POST['logedin']))
         {
-            $mg = "fill in all the boxes";
-        }
-        else
-        {
-            $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
-            $sql->execute();
-            $row = $sql->fetch();
-            if (empty($row) == true)
+            require_once("config.php");
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            if($password == NULL || $login == NULL)
             {
-                $mg = "account does not exist";
+                $mg = "fill in all the boxes";
             }
             else
             {
-                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' AND `password` = ? OR `email` = '$login' AND `password` = ?  LIMIT 1");
-                $sql->execute([md5($password)]);
+                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
+                $sql->execute();
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    $mg = "check inputs";
+                    $mg = "account does not exist";
                 }
                 else
                 {
-                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = ? OR `email` = '$login' AND `account` = ? LIMIT 1");
-                    $sql->execute(1);
+                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' AND `password` = ? OR `email` = '$login' AND `password` = ?  LIMIT 1");
+                    $sql->execute([md5($password)]);
                     $row = $sql->fetch();
                     if (empty($row) == true)
                     {
-                        $mg = "account not activeted please check your email";
+                        $mg = "check inputs";
                     }
                     else
                     {
-                        header('Location: logedin.php');
-                        exit();
+                        $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = ? OR `email` = '$login' AND `account` = ? LIMIT 1");
+                        $sql->execute(1);
+                        $row = $sql->fetch();
+                        if (empty($row) == true)
+                        {
+                            $mg = "account not activeted please check your email";
+                        }
+                        else
+                        {
+                            session_start();
+                            $_SESSION['login'] = $_POST['login'];
+                            $_SESSION['password'] = md5($_POST['password']);
+                            header('Location: logedin.php');
+                            exit();
+                        }
                     }
                 }
             }
         }
+        
+    }
+    else
+    {
+        header('Location: logedin.php');
+        exit();
     }
 ?>
 

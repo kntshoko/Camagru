@@ -1,9 +1,17 @@
 <?php
+        if (session_id() == '')
+        {
+            header('Location: index.php');
+            exit();
+        }
+        else
+        {
+            session_unset();
+            session_destroy();
+            header('Location: index.php');
+            exit();
+        }
 
-        session_unset();
-        session_destroy();
-        header('Location: index.php');
-        exit();
 ?>
 
 <html>

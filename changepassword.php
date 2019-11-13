@@ -2,44 +2,53 @@
 <?php
     
     $mg = "";
-    if (isset($_POST['submit']))
+    if (session_id() == '')
     {
-        require_once("config.php");
-        $sql = $conn->prepare("SELECT id FROM users WHERE `password`= ? LIMIT 1");
-        $sql->execute(md5($_POST['currentpassword']));
-        $row = $sql->fetch();
-        if (empty($row) != true)
+        header('Location: index.php');
+        exit();
+    }
+    else
+    {
+            if (isset($_POST['submit']))
         {
-            if ( $_POST['conpassword'] == null || $_POST['newpassword'] == null)
+            require_once("config.php");
+            $sql = $conn->prepare("SELECT id FROM users WHERE `password`= ? LIMIT 1");
+            $sql->execute(md5($_POST['currentpassword']));
+            $row = $sql->fetch();
+            if (empty($row) != true)
             {
-                $mg = "check your input";
-            }
-            else
-            {
-                if ($_POST['conpassword'] == $_POST['newpassword'])
+                if ( $_POST['conpassword'] == null || $_POST['newpassword'] == null)
                 {
-                    $email = $_SESSION['email'];
-                    $password = $_SESSION['password'];
-                    $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `password` = '$password' AND `email` = '$email'");
-                    $sql->execute([md5($_GET['conpassword'])]); 
-                    $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'");
-                    $sql->execute([""]); 
-                    $_SESSION['password'] = md5($_GET['conpassword']);
-                    header('Location: logedin.php');
-                    exit();
+                    $mg = "check your input";
                 }
                 else
                 {
-                    $mg = "Passsword do not match";
-                }
-            } 
-            $conn = NULL;
-        }
-        else
-        {
-            $mg = "Passsword do not match";
+                    if ($_POST['conpassword'] == $_POST['newpassword'])
+                    {
+                        $email = $_SESSION['email'];
+                        $password = $_SESSION['password'];
+                        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `password` = '$password' AND `email` = '$email'");
+                        $sql->execute([md5($_GET['conpassword'])]); 
+                        $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'");
+                        $sql->execute([""]); 
+                        $_SESSION['password'] = md5($_GET['conpassword']);
+                        header('Location: logedin.php');
+                        exit();
+                    }
+                    else
+                    {
+                        $mg = "Passsword do not match";
+                    }
+                } 
+                $conn = NULL;
+            }
+            else
+            {
+                $mg = "Passsword do not match";
+            }
         }
     }
+
 ?>
 
 

@@ -1,7 +1,9 @@
 <?php
-    session_start();
-    $_SESSION['login'] = $_POST['login'];
-    $_SESSION['password'] = md5($_POST['password']);
+    if (session_id() == '')
+    {
+        header('Location: index.php');
+        exit();
+    }
 ?>
 <html>
 <head>
