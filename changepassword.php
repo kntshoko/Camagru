@@ -2,14 +2,15 @@
 <?php
     
     $mg = "";
-    if (session_id() == '')
+    session_start();
+    if(!$_SESSION['login'])
     {
         header('Location: index.php');
         exit();
     }
     else
     {
-            if (isset($_POST['submit']))
+        if (isset($_POST['submit']))
         {
             require_once("config.php");
             $sql = $conn->prepare("SELECT id FROM users WHERE `password`= ? LIMIT 1");
@@ -48,6 +49,7 @@
             }
         }
     }
+    
 
 ?>
 

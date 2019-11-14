@@ -1,14 +1,22 @@
 <?php
-if (isset($_POST['submit']))
+session_start();
+if(!$_SESSION['login'])
 {
-    require_once("config.php"); 
-            $email = $_POST['email']; 
-    if ($email == null )
+    header('Location: index.php');
+    exit();
+}
+else
+{
+    if (isset($_POST['submit']))
     {
-        $mg = "check your inputs";
-    }
-    else
-    {
+        require_once("config.php"); 
+        $email = $_POST['email']; 
+        if ($email == null )
+        {
+            $mg = "check your inputs";
+        }
+        else
+        {
             $sql = $conn->prepare("SELECT id FROM users WHERE `email` = '$email' LIMIT 1");
             $sql->execute();
             $row = $sql->fetch();
@@ -34,7 +42,8 @@ if (isset($_POST['submit']))
                 $mg = "check your inputs";
             }
         }   
-    $conn = NULL;
+        $conn = NULL;
+    }
 }
 
 ?>
