@@ -199,7 +199,7 @@
             <a href="index.php">Go To Welcome</a>
             <a href="registration.php">Register Account</a>
             <a href="forgotpassword.php">Forgot Password</a>
-        </div>      
+    </div>      
     <h1 align = center>
             CAMAGRU
     </h1>

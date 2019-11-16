@@ -14,6 +14,11 @@ if(!$_SESSION['login'])
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
+        form
+        {
+                background-color: #333;
+                text-align : center;
+        }
 
         .cl {
             overflow: hidden;
