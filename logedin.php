@@ -86,7 +86,7 @@ if(!$_SESSION['login'])
 </head>
 <body>
     <div class="cl">
-        <a href="#">GALLARY</a>
+        <a href="gallary.php">GALLARY</a>
         <div class="drop">
             <button class="setbtn">SETTINGS</button>
             <div class="cont">
