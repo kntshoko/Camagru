@@ -1,10 +1,51 @@
 
 <?php
+    $mg = "";
     session_start();
     if(!$_SESSION['login'])
     {
         header('Location: index.php');
         exit();
+    }
+    else
+    {
+        if (isset($_POST['submit']))
+        {
+            require_once("config.php"); 
+            if($_POST['email'] != null)
+            {
+                $sql = $conn->prepare("SELECT id FROM users WHERE  `email` = ? LIMIT 1");
+                $sql->execute($_POST['email']);
+                $row = $sql->fetch();
+                if (empty($row) == true)
+                {
+                    $sql = $conn->prepare("UPDATE users SET `email` = ?  WHERE `email` = ?");
+                    $sql->execute([$_POST['email'],$_POST['email']]); 
+                }
+                else
+                {
+                    $mg = "email already exists";
+                }
+            }
+            if($_POST['username'] != null)
+            {
+                $sql = $conn->prepare("SELECT id FROM users WHERE  `user_name` = ? LIMIT 1");
+                $sql->execute($_POST['username']);
+                $row = $sql->fetch();
+                if (empty($row) == true)
+                {
+                    $sql = $conn->prepare("UPDATE users SET `user_name` = ?  WHERE `user_name` = ?");
+                    $sql->execute([$_POST['username'],$_POST['username']]); 
+                }
+                else
+                {
+                    $mg = "username already exists";
+                }
+            }
+            $conn = null;
+            
+            $mg = "yo";
+        }
     }
 ?>
 <html>
@@ -92,7 +133,7 @@
     </h1>
     <div class = "cl">
         
-            <form action="perferences.php" method ="post">
+            <form action="preferences.php" method ="post">
             <h2>PERFERENCES FORM</h2>
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
@@ -110,6 +151,7 @@
                     <br><br>
                     <label for="username"> change username </label> 
                     <br>
+                    <input type="text" name = "username" />
                     <br><br>
                     <label for="likes">like notification  </label>   
                     <br>
@@ -117,6 +159,10 @@
                     <label for="comments">comment notification  </label>   
                     <br>
                     <br>
+                    <label for="username"> Password </label> 
+                    <br>
+                    <input type="text" name = "username" />
+                    <br><br>
                     <input type="submit" name = "submit" value = "register"/>
                     <br><br>
                 </div>

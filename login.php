@@ -113,9 +113,8 @@
     }
     else
     {
-        //header('Location: logedin.php');
-        //exit();
-        echo "mg3";
+        header('Location: logedin.php');
+        exit();
     } 
 ?>
 
