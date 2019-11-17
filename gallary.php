@@ -164,10 +164,12 @@ if(isset($_POST['submit'])){
         }
         .booth
         {
-            width : 400px;
-            background-color : #ccc;
-            border : 10px solid #ddd;
-            margin : 0 auto;
+            width: 87%;
+            height: 87%;
+            background-color: #ccc;
+            border: 10px solid #ddd;
+            /* margin: 0 auto; */
+            position: absolute
         }
         .capturbutton{
             display :block;
@@ -177,6 +179,14 @@ if(isset($_POST['submit'])){
             color : #fff;
             text-align : center;
             text-decoration : none; 
+        }
+        .video{
+            width :40%;
+             height : 30%; 
+        }
+        .canvas{
+            width :40%;
+             height : 30%; 
         }
         </style>
     </head>
@@ -190,9 +200,9 @@ if(isset($_POST['submit'])){
             </h1>
                 <div class = "main">
                 <div class="booth">
-        <video id="video" width ="400" height = "300" ></video>
+        <video id="video"  class = "video"></video>
         <a href="#" id = "capture" class="capturbutton">Take photo</a>
-        <canvas id = "canvas" width = "400" height = "300"></canvas>
+        <canvas id = "canvas"  class = "canvas"></canvas>
     </div>
     <script>
     (function()
