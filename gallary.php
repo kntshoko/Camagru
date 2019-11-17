@@ -162,6 +162,22 @@ if(isset($_POST['submit'])){
             top : 5%;
             display : inline-block;
         }
+        .booth
+        {
+            width : 400px;
+            background-color : #ccc;
+            border : 10px solid #ddd;
+            margin : 0 auto;
+        }
+        .capturbutton{
+            display :block;
+            margin : 10px 0;
+            padding : 10px 20px;
+            background-color : cornflowerblue;
+            color : #fff;
+            text-align : center;
+            text-decoration : none; 
+        }
         </style>
     </head>
     <body>
@@ -173,6 +189,46 @@ if(isset($_POST['submit'])){
                 CAMAGRU
             </h1>
                 <div class = "main">
+                <div class="booth">
+        <video id="video" width ="400" height = "300" ></video>
+        <a href="#" id = "capture" class="capturbutton">Take photo</a>
+        <canvas id = "canvas" width = "400" height = "300"></canvas>
+    </div>
+    <script>
+    (function()
+{
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    //var vendorUrl = window.URL || window.webkitURL;
+
+    navigator.getMedia =  navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia||
+                          navigator.mozGetUserMedia||
+                          navigator.msGetUserMedia;
+    
+    navigator.getMedia(
+        {
+            video : true,
+            audio : false
+        },
+        function(stream)
+        {
+            video.srcObject = stream;
+            video.play();
+        },
+        function(error)
+        {
+
+        }
+    );
+
+    document.getElementById('capture').addEventListener('click',function()
+    {
+        context.drawImage(video, 0,0, 400,300)
+    })
+
+})()</script>
                 </div>
                 <div class = "foot">
                     <form action="upload.php" method ="post" enctype = "multipart/form-data">
