@@ -1,3 +1,6 @@
+<?php
+    //require "setup.php";
+?>
 <html>
     <head>
         <title>Document</title>

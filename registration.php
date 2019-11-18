@@ -2,14 +2,15 @@
     $mg = "";
     if (isset($_POST['submit']))
     {
+        require_once ("setup.php");
+        die();
         require_once("config.php"); 
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 $conpasword = $_POST['conpassword']; 
-        if ($firstname == null || $lastname == null || $email == null || $username == null || $conpasword != $password)
+                echo "1111";
+        if ($email == null || $username == null || $conpasword != $password)
         {
             $mg = "check your inputs";
         }
@@ -22,9 +23,9 @@
                 {
                     $token = substr(str_shuffle($firstname.$lastname."123456789".
                     "MNBVCXZASDFGHJKL"),0,10);
-                    $sql = $conn->prepare("INSERT INTO users (`firstname`,`lastname`,`user_name`,`email`,`password`,`token`) 
-                    VALUES (?,?,?,?,?,?)"); 
-                    $sql->execute([$firstname,$lastname,$username,$email,md5($password),$token]);
+                    $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`) 
+                    VALUES (?,?,?,?)"); 
+                    $sql->execute([$username,$email,md5($password),$token]);
                     $to = $email;
                     $subject = "CAMAGRU email comfermation";
                     $message = "click on the link below<br><a href ='http://localhost:8081/untitled%20folder/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
@@ -143,13 +144,6 @@
                      ?>
                 </h2>
                  <div class = "con">
-                  <label for="firstrname">First Name :</label>   <br>
-                    <input type="text" name = "firstname" />
-                    <br><br>
-                    <label for="firstrname">Last Name : </label>     
-                    <br>
-                    <input type="text" name = "lastname" />
-                    <br><br>
                     <label for="username">User Name : </label>   
                     <br>
                     <input type="text" name = "username" />

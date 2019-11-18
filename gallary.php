@@ -1,9 +1,7 @@
 
 <?php
 if(isset($_POST['submit'])){
-   // session_start();
-   // include_once ('config/setup.php');
-    //include_once ('config/database.php');
+    session_start();
     $name = $_SESSION['login'];
     $file = $_FILES['file'];
     $filename = $_FILES['file']['name'];
@@ -20,17 +18,6 @@ if(isset($_POST['submit'])){
                 $newname = uniqid('', true).".".$fileActExt;
                 $filedest = 'uploads/'.$newname;
                 echo $file;
-     /*           try{
-                $sql = "INSERT INTO `camagru`.`gallery` (`name`,comments, images) VALUES (?,?,?)";
-                var_dump($sql);
-                $stmt = $conn->prepare($sql);
-                
-                $stmt->execute([$name,'', $newname]);
-                 move_uploaded_file($fileTemp, $filedest);
-                 header("location: home.php");
-                }catch(PDOException $e){
-                    echo $e->getMessage();
-                }*/
              }else{
                  echo "FILE IS TO LAREG";
              }
@@ -199,10 +186,10 @@ if(isset($_POST['submit'])){
                 CAMAGRU
             </h1>
                 <div class = "main">
-                <div class="booth">
-        <video id="video"  class = "video"></video>
-        <a href="#" id = "capture" class="capturbutton">Take photo</a>
-        <canvas id = "canvas"  class = "canvas"></canvas>
+                    <div class="booth">
+                        <video id="video"  class = "video"></video>
+                        <a href="#" id = "capture" class="capturbutton">Take photo</a>
+                    <canvas id = "canvas"  class = "canvas"></canvas>
     </div>
     <script>
     (function()
