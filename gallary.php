@@ -151,6 +151,7 @@ if(isset($_POST['submit'])){
         }
         .booth
         {
+            position :absolute;
             width: 87%;
             height: 87%;
             background-color: #ccc;
@@ -168,10 +169,12 @@ if(isset($_POST['submit'])){
             text-decoration : none; 
         }
         .video{
+            margin : auto;
             width :40%;
              height : 30%; 
         }
         .canvas{
+            margin :auto;
             width :40%;
              height : 30%; 
         }
@@ -179,7 +182,7 @@ if(isset($_POST['submit'])){
     </head>
     <body>
         <div class = "cll">
-            <a href="index.php">Go To Welcome</a>
+            <a href="logedin.php">Go To Welcome</a>
         </div>         
         <div class = "bd">     
             <h1 align = center>
@@ -222,7 +225,7 @@ if(isset($_POST['submit'])){
 
     document.getElementById('capture').addEventListener('click',function()
     {
-        context.drawImage(video, 0,0, 400,300)
+        context.drawImage(video, 0,0, 40, 30);
     })
 
 })()</script>

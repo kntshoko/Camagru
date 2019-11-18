@@ -3,38 +3,43 @@
     if (isset($_POST['submit']))
     {
         require_once ("setup.php");
-        die();
         require_once("config.php"); 
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 $conpasword = $_POST['conpassword']; 
-                echo "1111";
+                
         if ($email == null || $username == null || $conpasword != $password)
         {
             $mg = "check your inputs";
+
         }
         else
         {
+
                 $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$username' OR `email` = '$email' LIMIT 1");
                 $sql->execute();
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    $token = substr(str_shuffle($firstname.$lastname."123456789".
+                    $token = substr(str_shuffle("123456789".
                     "MNBVCXZASDFGHJKL"),0,10);
-                    $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`) 
-                    VALUES (?,?,?,?)"); 
-                    $sql->execute([$username,$email,md5($password),$token]);
+  
+                    $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`,`account`) 
+                    VALUES (?,?,?,?,?)"); 
+                    
+
+                    $sql->execute([$username,$email,md5($password),$token,0]);
+
                     $to = $email;
                     $subject = "CAMAGRU email comfermation";
-                    $message = "click on the link below<br><a href ='http://localhost:8081/untitled%20folder/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
+                    $message = "click on the link below<br><a href ='http://localhost:8080/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
                     $headers = 'From: nonreply'."\r\n";
                     $headers .= "MIME-Version: 1.0"."\r\n";
                     $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
                     mail($to,$subject,$message,$headers);
                     $mg ="mail sent check your mailbox";
-                   
+  
                 }
                 else
                 {
