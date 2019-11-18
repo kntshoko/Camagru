@@ -1,5 +1,5 @@
-
 <?php
+$filedest = "";
 if(isset($_POST['submit'])){
     session_start();
     $name = $_SESSION['login'];
@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
              if($fileSize < 10000000){
                 $newname = uniqid('', true).".".$fileActExt;
                 $filedest = 'uploads/'.$newname;
-                echo $file;
+                
              }else{
                  echo "FILE IS TO LAREG";
              }
@@ -175,8 +175,8 @@ if(isset($_POST['submit'])){
         }
         .canvas{
             margin :auto;
-            width :40%;
-             height : 30%; 
+            width :300;
+             height :300; 
         }
         </style>
     </head>
@@ -189,13 +189,20 @@ if(isset($_POST['submit'])){
                 CAMAGRU
             </h1>
                 <div class = "main">
+                <button type="button" onclick="myfunction()">Try it</button>
                     <div class="booth">
+                        <?php
+                            if ($filedest != null)
+                            {
+                                echo $filedest;
+                            } 
+                        ?>
                         <video id="video"  class = "video"></video>
                         <a href="#" id = "capture" class="capturbutton">Take photo</a>
                     <canvas id = "canvas"  class = "canvas"></canvas>
     </div>
     <script>
-    (function()
+    function myfunction()
 {
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
@@ -225,10 +232,9 @@ if(isset($_POST['submit'])){
 
     document.getElementById('capture').addEventListener('click',function()
     {
-        context.drawImage(video, 0,0, 40, 30);
+        context.drawImage(video, 0,0, 400, 300);
     })
-
-})()</script>
+    };</script>
                 </div>
                 <div class = "foot">
                     <form action="upload.php" method ="post" enctype = "multipart/form-data">
