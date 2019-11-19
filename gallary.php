@@ -168,16 +168,17 @@ if(isset($_POST['submit'])){
             text-align : center;
             text-decoration : none; 
         }
-        .video{
+        .video, .canvas{
+            display :block;
             margin : auto;
-            width :40%;
-             height : 30%; 
+            width :50%;
+             height : 40%; 
         }
-        .canvas{
+        /* {
             margin :auto;
-            width :300;
-             height :300; 
-        }
+            width :30%;
+             height :30%; 
+        } */
         </style>
     </head>
     <body>
@@ -190,6 +191,7 @@ if(isset($_POST['submit'])){
             </h1>
                 <div class = "main">
                 <button type="button" onclick="myfunction()">Try it</button>
+                <button type="button" id = "upload" class="upload">upload</button>
                     <div class="booth">
                         <?php
                             if ($filedest != null)
@@ -198,8 +200,9 @@ if(isset($_POST['submit'])){
                             } 
                         ?>
                         <video id="video"  class = "video"></video>
+                        <canvas id = "canvas"  class = "canvas"></canvas>
                         <a href="#" id = "capture" class="capturbutton">Take photo</a>
-                    <canvas id = "canvas"  class = "canvas"></canvas>
+                    
     </div>
     <script>
     function myfunction()
@@ -230,11 +233,29 @@ if(isset($_POST['submit'])){
         }
     );
 
+
     document.getElementById('capture').addEventListener('click',function()
     {
-        context.drawImage(video, 0,0, 400, 300);
+        canvas.width = video.clientWidth;
+        canvas.height = video.clientWidth;
+        context.drawImage(video, 10,4);
     })
-    };</script>
+
+    document.getElementById("upload").addEventListener("click", function() {
+    var canvas = document.getElementById("canvas");
+    var dataURL = canvas.toDataURL("image/png");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        console.log(xhr.status, xhr.responseText);
+    };
+    
+    xhr.open('POST', 't.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("image="+dataURL);
+    //
+    })
+    };
+    </script>
                 </div>
                 <div class = "foot">
                     <form action="upload.php" method ="post" enctype = "multipart/form-data">

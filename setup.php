@@ -61,7 +61,7 @@ $dbName = "camagru";
         $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `camagru`.`gallery` 
             ( `imageid` INT(11) NOT NULL AUTO_INCREMENT ,
             `user_name` VARCHAR(20) NOT NULL ,
-            `imagename` INT NOT NULL ,
+            `imagename` VARCHAR(100) NOT NULL ,
             PRIMARY KEY (`imageid`))") ;
     $sql->execute(); 
     }catch(PDOExceptipn $e){
