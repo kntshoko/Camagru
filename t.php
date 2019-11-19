@@ -17,12 +17,11 @@
     try
     {
         $sql = $conn->prepare("INSERT INTO `gallery`( `user_name`,`imagename`) VALUES(?,?)"); 
-        var_dump($sql);
-        var_dump("t");
-        $sql->execute(["erty",$file]);
+        $sql->execute([$name,$file]);
     }
     catch (PDOException $e)
     {
         echo $e->getMessage();
     }
+    $conn = NULL;
 ?>
