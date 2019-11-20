@@ -103,17 +103,17 @@
                     }  
                     echo "<table>";
                         echo "<tr>";
-                            foreach ($result as $row) {
-                                echo "<td>";
-                                    ?>
+                            //? foreach ($result as $row) {
+                                 echo "<td>";
+                                     ?>
                                         <img src="
-                                            <?php
-                                                echo "uploads/".$row['imagename'];
-                                            ?>" 
-                                        alt="">
-                                    <?php
-                                echo "</td>";
-                            }
+                                             <?php
+                                                echo "uploads/".$result[1]['imagename'];
+                            //                 ?>" 
+                                         alt="">
+                                     <?php
+                            //     echo "</td>";
+                            // }
                         echo "</tr>";
                     echo "</table>";
                 ?>
