@@ -126,3 +126,27 @@
 </html>
 
 
+function mydrw(input)
+            {
+            var reader = new FileReader();
+            reader.onload = Function(e){
+            document.getElementById("preview").setAttribute("src",e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+            function setImage()
+            {
+            var image = document.getElementById("preview");
+            context.drawImage(image,0,0);
+            }
+
+
+
+
+            <div class = "foot">
+
+                    <label for="filetoupload">Select image to upload:</label> 
+                    <input type="file" onChange = "mydrw(this);">
+                    <img id ="preview">
+                    <button onClick = "settImage();"> set image</button>
+                </div>  

@@ -255,14 +255,39 @@ if(isset($_POST['submit'])){
     //
     })
     };
+
+
+
+
+
+
+                            function mydrw(input)
+            {
+            var reader = new FileReader();
+            reader.onload = function (e){
+            document.getElementById("preview").setAttribute("src",e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+            function setImage()
+            {
+            var image = document.getElementById("preview");
+            context.drawImage(image,0,0);
+            }
+
+
+
+
+
+
     </script>
                 </div>
                 <div class = "foot">
-                    <form action="upload.php" method ="post" enctype = "multipart/form-data">
-                       <label for="filetoupload">Select image to upload:</label> 
-                        <input type="file" name = "filetoupload" id = "filetoupload>">
+                    
+                <label for="filetoupload">Select image to upload:</label> 
+                    <input type="file" onchange = "mydrw(this);">
                         <input type="submit" value = "upload image">
-                    </form>    
+                       
                 </div>  
                 <div class="left">
                 </div> 

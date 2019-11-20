@@ -72,11 +72,9 @@
                     }
                     else
                     {
-                        echo "mg16 ";
+
                         $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = 1 LIMIT 1");
-                        echo "mg17 ";
                         $sql->execute();
-                        echo "mg18 ";
                         $row = $sql->fetch();
                         if (empty($row) == true)
                         {
@@ -94,7 +92,6 @@
                                 $_SESSION['password'] = md5($_POST['password']);
                                 header('Location: logedin.php');
                                 exit();
-                                echo "mg1";
                             }
                         }
                         else
@@ -104,7 +101,6 @@
                             $_SESSION['password'] = md5($_POST['password']);
                             header('Location: logedin.php');
                             exit();
-                            echo "mg2";
                         }
                     }
                 }
