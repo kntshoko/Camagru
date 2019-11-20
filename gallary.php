@@ -78,7 +78,7 @@ if(isset($_POST['submit'])){
                 border : 1px solid #ccc;
                 box-sizing : border-box;
             }
-            input[type=submit], input[type=file]{
+            input[type=submit],  /*input[type=file]*/{ 
                 width : 30%;
                 padding : 10px 18px;
                 margin : 8px 0;
@@ -205,10 +205,12 @@ if(isset($_POST['submit'])){
                     
     </div>
     <script>
+     var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
     function myfunction()
 {
-    var video = document.getElementById('video');
-    var canvas = document.getElementById('canvas');
+    // var video = document.getElementById('video');
+    // var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     //var vendorUrl = window.URL || window.webkitURL;
 
@@ -253,12 +255,34 @@ if(isset($_POST['submit'])){
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("image="+dataURL);
     //
+    });
+    }
+
+    document.getElementById('capture').addEventListener('click',function()
+    {
+        canvas.width = video.clientWidth;
+        canvas.height = video.clientWidth;
+        context.drawImage(video, 10,4);
     })
+
+    document.getElementById("upload").addEventListener("click", function() {
+    var canvas = document.getElementById("canvas");
+    var dataURL = canvas.toDataURL("image/png");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        console.log(xhr.status, xhr.responseText);
     };
+    
+    xhr.open('POST', 't.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("image="+dataURL);
+    //
+    });
 
 
 
-
+                // var canvas = document.getElementById('canvas');
+                // var context = canvas.getContext('2d');
 
 
                             function mydrw(input)
@@ -286,7 +310,8 @@ if(isset($_POST['submit'])){
                     
                 <label for="filetoupload">Select image to upload:</label> 
                     <input type="file" onchange = "mydrw(this);">
-                        <input type="submit" value = "upload image">
+                    <img id ="preview">
+                    <button onClick = "setImage();"> set image</button>
                        
                 </div>  
                 <div class="left">
