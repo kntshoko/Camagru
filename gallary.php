@@ -276,7 +276,7 @@ if(isset($_POST['submit'])){
     xhr.open('POST', 't.php', true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("image="+dataURL);
-    //
+    // 
     });
 
 

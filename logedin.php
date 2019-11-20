@@ -97,7 +97,7 @@ if(!$_SESSION['login'])
         }
         button{
             display: block;
-            position : absolute;
+            /* position : absolute; */
         }
     </style>
 </head>
@@ -141,7 +141,26 @@ if(!$_SESSION['login'])
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
                                         alt="">
-                                        <button onclicl = "mylikes()">likes</button>
+                                        <button id = "likes" onClick = "mylikes(<?php echo $row['imageid'];?>,<?php echo $session['login'];?>)"> <?php //[$row['imageid'], $session['login']];
+                                        // 
+                                        // likes counter
+                                        require_once ("setup.php");
+            require_once("config.php"); 
+
+            $sql = $conn->prepare("SELECT * FROM likes WHERE  `imageid` = ?");
+                $sql->execute([$row['imageid']]);
+                $likes = $sql->fetchall();
+            if(!empty($likes))
+            {
+                echo $likes->rowCount();
+            }
+            else{
+                echo '0';
+            }
+                                        // 
+                                        //
+                                     
+                                        ?> likes</button>
                                         <button id = "mycomments()">comments</button>
                                     <?php
                                 echo "</td>";
@@ -150,5 +169,39 @@ if(!$_SESSION['login'])
                     echo "</table>";
                 ?>
     </div>
+    <script>
+
+    
+        document.getElementById("likes").addEventListener("click", function mylikes( username, imageid) 
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+            console.log(xhr.status, xhr.responseText);
+            }
+            xhr.open('POST', 'likes.php', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("imageid="+imageid);
+        }
+
+
+
+            /////check same as the one above
+
+            document.getElementById("upload").addEventListener("click", function() {
+    var canvas = document.getElementById("canvas");
+    var dataURL = canvas.toDataURL("image/png");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        console.log(xhr.status, xhr.responseText);
+    };
+    
+    xhr.open('POST', 't.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("image="+dataURL);
+    // 
+    }
+
+            ////
+    </script>
 </body>
 </html>
