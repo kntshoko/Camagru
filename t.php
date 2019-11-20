@@ -3,7 +3,7 @@
     require_once ("setup.php");
     require_once("config.php");
 
-    $img = $_POST['img'];
+    $img = $_POST['image'];
     $name = $_SESSION['login'];
 
     $img = str_replace('data:image/png;base64,', '', $img);

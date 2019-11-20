@@ -92,6 +92,14 @@
              float : left;
              
         }
+        table{
+            position : absolute;
+        }
+        img{
+            /* position : absolute; */
+            width : 40%;
+            height : 30%;
+        }
         </style>
     </head>
     <body>
@@ -104,7 +112,35 @@
             </h1>   
         <div class = "main">
             <div class = "imgs">
-
+            <?php                         
+                    require_once ("setup.php");
+                    require_once("config.php");   
+                        
+                    try{
+                            $sql = $conn->prepare("SELECT * FROM gallery") ;
+                            $sql->execute(); 
+                            $result = $sql->fetchall();
+                    }
+                    catch(PDOExceptipn $e)
+                    {
+                    echo $e->getMessage();
+                    }  
+                    echo "<table>";
+                        echo "<tr>";
+                            foreach ($result as $row) {
+                                echo "<td>";
+                                    ?>
+                                        <img src="
+                                            <?php
+                                                echo "uploads/".$row['imagename'];
+                                            ?>" 
+                                        alt="">
+                                    <?php
+                                echo "</td>";
+                            }
+                        echo "</tr>";
+                    echo "</table>";
+                ?>
             </div>
             <div class = "controls">
 
