@@ -113,8 +113,8 @@
         <div class = "main">
             <div class = "imgs">
             <?php                         
-                    require_once ("setup.php");
-                    require_once("config.php");   
+                    require_once ("../model/config/database.php");
+                    require_once("../model/config/setup.php");   
                         
                     try{
                             $sql = $conn->prepare("SELECT * FROM gallery") ;

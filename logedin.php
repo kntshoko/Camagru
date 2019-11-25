@@ -89,6 +89,8 @@ if(!$_SESSION['login'])
         }
         table{
             position : absolute;
+           width : 40%;
+            height : 30%;
         }
         img{
             /* position : absolute; */
@@ -133,6 +135,8 @@ if(!$_SESSION['login'])
                     }  
                     echo "<table>";
                         echo "<tr>";
+                        $i = 0;
+                       // while ($i < 4){
                             foreach ($result as $row) {
                                 echo "<td>";
                                     ?>
@@ -141,30 +145,13 @@ if(!$_SESSION['login'])
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
                                         alt="">
-                                        <button id = "likes" onClick = "mylikes(<?php echo $row['imageid'];?>,<?php echo $session['login'];?>)"> <?php //[$row['imageid'], $session['login']];
-                                        // 
-                                        // likes counter
-                                        require_once ("setup.php");
-            require_once("config.php"); 
-
-            $sql = $conn->prepare("SELECT * FROM likes WHERE  `imageid` = ?");
-                $sql->execute([$row['imageid']]);
-                $likes = $sql->fetchall();
-            if(!empty($likes))
-            {
-                echo $likes->rowCount();
-            }
-            else{
-                echo '0';
-            }
-                                        // 
-                                        //
-                                     
-                                        ?> likes</button>
-                                        <button id = "mycomments()">comments</button>
+                                        <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
+                                        <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>';"> comments</button>
                                     <?php
                                 echo "</td>";
-                            }
+                                
+                         //  $i++;
+                         }
                         echo "</tr>";
                     echo "</table>";
                 ?>
@@ -172,22 +159,20 @@ if(!$_SESSION['login'])
     <script>
 
     
-        document.getElementById("likes").addEventListener("click", function mylikes( username, imageid) 
-        {
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-            console.log(xhr.status, xhr.responseText);
-            }
-            xhr.open('POST', 'likes.php', true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("imageid="+imageid);
-        }
+function mylikes(id) {
+  var xhttp = new XMLHttpRequest();
+    var x =  document.getElementById(id)
 
+  xhttp.open("POST", "likes.php", true);
+  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  console.log(x.value);
+  xhttp.send("value="+x.value);
+}
 
 
             /////check same as the one above
 
-            document.getElementById("upload").addEventListener("click", function() {
+    /*        document.getElementById("upload").addEventListener("click", function() {
     var canvas = document.getElementById("canvas");
     var dataURL = canvas.toDataURL("image/png");
     var xhr = new XMLHttpRequest();
@@ -199,7 +184,7 @@ if(!$_SESSION['login'])
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("image="+dataURL);
     // 
-    }
+    }*/
 
             ////
     </script>

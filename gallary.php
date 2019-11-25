@@ -190,7 +190,7 @@ if(isset($_POST['submit'])){
                 CAMAGRU
             </h1>
                 <div class = "main">
-                <button type="button" onclick="myfunction()">Try it</button>
+                <button type="button" onclick="myfunction()">enable webcam</button>
                 <button type="button" id = "upload" class="upload">upload</button>
                     <div class="booth">
                         <?php

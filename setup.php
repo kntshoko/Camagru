@@ -26,6 +26,7 @@ $dbName = "camagru";
             `password` VARCHAR(100) NOT NULL ,
             `token` VARCHAR(10) NOT NULL ,
             `account` INT(1) UNSIGNED NOT NULL ,
+            `notification` INT(1) UNSIGNED NOT NULL ,
             PRIMARY KEY (`id`))");
         $sql->execute(); 
     }
@@ -47,10 +48,10 @@ $dbName = "camagru";
 
     try{
         $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `camagru`.`likes` 
-            ( `imageid` INT(11) NOT NULL AUTO_INCREMENT ,
+            ( `likeid` INT(11) NOT NULL AUTO_INCREMENT ,
             `user_name` VARCHAR(20) NOT NULL ,
-            `imagename` INT NOT NULL ,
-            PRIMARY KEY (`imageid`))") ;
+            `imageid` INT(11) NOT NULL ,
+            PRIMARY KEY (`likeid`))") ;
     $sql->execute(); 
     }catch(PDOExceptipn $e){
         echo $e->getMessage();
