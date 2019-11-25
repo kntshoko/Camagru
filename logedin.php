@@ -88,9 +88,10 @@ if(!$_SESSION['login'])
             background-color: #333;
         }
         table{
+            padding : none;
             position : absolute;
-           width : 40%;
-            height : 30%;
+           width : 50%;
+            height : 40%;
         }
         img{
             /* position : absolute; */
@@ -134,10 +135,11 @@ if(!$_SESSION['login'])
                     echo $e->getMessage();
                     }  
                     echo "<table>";
-                        echo "<tr>";
+                       
                         $i = 0;
                        // while ($i < 4){
                             foreach ($result as $row) {
+                                 echo "<tr>";
                                 echo "<td>";
                                     ?>
                                         <img src="
@@ -146,13 +148,13 @@ if(!$_SESSION['login'])
                                             ?>" 
                                         alt="">
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
-                                        <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>';"> comments</button>
+                                        <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>
                                     <?php
                                 echo "</td>";
-                                
+                                echo "</tr>";
                          //  $i++;
                          }
-                        echo "</tr>";
+                        
                     echo "</table>";
                 ?>
     </div>

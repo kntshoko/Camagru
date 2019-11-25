@@ -8,13 +8,14 @@ $dbName = "camagru";
     try {
         $conn = new PDO("mysql:host=$servername", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
+        $sql = $conn->prepare("CREATE DATABASE IF NOT EXISTS $dbName");
+        $sql->execute();
     }
     catch(PDOException $e)
     {
         echo "Connection failed: " . $e->getMessage();
     }
-  
+ 
     try{
         $conn = new PDO("mysql:host=$servername", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,7 +29,9 @@ $dbName = "camagru";
             `account` INT(1) UNSIGNED NOT NULL ,
             `notification` INT(1) UNSIGNED NOT NULL ,
             PRIMARY KEY (`id`))");
+            
         $sql->execute(); 
+  
     }
     catch(PDOExceptipn $e){
         echo $sql ."<br>". $e->getmessage();
@@ -36,12 +39,13 @@ $dbName = "camagru";
 
     try{
         $sql = $conn->prepare("CREATE TABLE IF NOT EXISTS `camagru`.`comments` 
-            ( `imageid` INT(11) NOT NULL AUTO_INCREMENT ,
+            ( `commentid` INT(11) NOT NULL AUTO_INCREMENT ,
             `user_name` VARCHAR(20) NOT NULL ,
-            `imagename` INT NOT NULL ,
+            `imageid` INT(11) NOT NULL ,
             comment VARCHAR(200) NOT NULL,
-            PRIMARY KEY (`imageid`))") ;
+            PRIMARY KEY (`commentid`))") ;
     $sql->execute(); 
+    
     }catch(PDOExceptipn $e){
         echo $e->getMessage();
     }

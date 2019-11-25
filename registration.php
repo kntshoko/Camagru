@@ -1,9 +1,11 @@
 <?php
     $mg = "";
+   
     if (isset($_POST['submit']))
     {
         require_once ("setup.php");
-        require_once("config.php"); 
+        require_once("config.php");
+   
                 $username = $_POST['username'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -16,24 +18,25 @@
         }
         else
         {
-
+           
                 $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$username' OR `email` = '$email' LIMIT 1");
                 $sql->execute();
                 $row = $sql->fetch();
+                 
                 if (empty($row) == true)
                 {
+                   // var_dump($row);
+
+
                     $token = substr(str_shuffle("123456789".
                     "MNBVCXZASDFGHJKL"),0,10);
-  
-                    $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`,`account`) 
-                    VALUES (?,?,?,?,?)"); 
+                         $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`,`account`,`notification`) 
+                    VALUES (?,?,?,?,?,?)"); 
                     
-
-                    $sql->execute([$username,$email,md5($password),$token,0]);
-
+                    $sql->execute([$username,$email,md5($password),$token,0,1]);
                     $to = $email;
                     $subject = "CAMAGRU email comfermation";
-                    $message = "click on the link below<br><a href ='http://localhost:8081/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
+                    $message = "click on the link below<br><a href ='http://localhost:8080/sa4/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
                     $headers = 'From: nonreply'."\r\n";
                     $headers .= "MIME-Version: 1.0"."\r\n";
                     $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";

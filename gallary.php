@@ -240,7 +240,7 @@ if(isset($_POST['submit'])){
     {
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
-        context.drawImage(video, 10,4);
+        context.drawImage(video, 0,0);
     })
 
     document.getElementById("upload").addEventListener("click", function() {
@@ -262,7 +262,7 @@ if(isset($_POST['submit'])){
     {
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
-        context.drawImage(video, 10,4);
+        context.drawImage(video, 0,0);
     })
 
     document.getElementById("upload").addEventListener("click", function() {
