@@ -1,8 +1,8 @@
 <?php
-session_start();
-require_once ("setup.php");
-require_once("config.php"); 
-$username = $_SESSION['login'];
+    session_start();
+    require_once ("setup.php");
+    require_once("config.php"); 
+    $username = $_SESSION['login'];
 
     $imgname = $_GET['imgname'];
     $imgid = $_GET['imgid'];
@@ -89,13 +89,8 @@ $username = $_SESSION['login'];
                 <br><br>
             </div>
             <table>
-            <?php
-            
-
-            ?>
         </table>
-        </form>
-       
+        </form>   
   </div>      
 </body>
 </html>

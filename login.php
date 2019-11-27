@@ -5,7 +5,8 @@
     {
         if (isset($_POST['logedin']))
         {
-            require_once("config.php");
+            require_once ("setup.php");
+            require_once("config.php"); 
             $login = $_POST['login'];
             $password = $_POST['password'];
             if($password == NULL || $login == NULL)
@@ -27,7 +28,9 @@
                     {
                         if($row['account'] == 1)
                         {
-                            //login and set session variables
+                            $_SESSION['login'] = $row;
+                            header('Location: logedin.php');
+                            exit();
                         }
                         else
                         {
