@@ -1,7 +1,11 @@
 
-<html>
-    <head>
-        <title>Document</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
         <style>
              body {
             font-family: Arial, Helvetica, sans-serif;
@@ -97,8 +101,8 @@
         }
         img{
             /* position : absolute; */
-            width : 40%;
-            height : 30%;
+            /* width : 40%; */
+            /* height : 30%; */
         }
         </style>
     </head>
@@ -113,8 +117,8 @@
         <div class = "main">
             <div class = "imgs">
             <?php                         
-                    require_once ("../model/config/database.php");
-                    require_once("../model/config/setup.php");   
+                    require_once ("setup.php");
+                    require_once("config.php"); 
                         
                     try{
                             $sql = $conn->prepare("SELECT * FROM gallery") ;
@@ -126,8 +130,9 @@
                     echo $e->getMessage();
                     }  
                     echo "<table>";
-                        echo "<tr>";
+                       
                             foreach ($result as $row) {
+                                echo "<tr>";
                                 echo "<td>";
                                     ?>
                                         <img src="
@@ -137,6 +142,7 @@
                                         alt="">
                                     <?php
                                 echo "</td>";
+                                echo "</tr>";
                             }
                         echo "</tr>";
                     echo "</table>";

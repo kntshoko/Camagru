@@ -7,11 +7,34 @@ $username = $_SESSION['login'];
     $imgname = $_GET['imgname'];
     $imgid = $_GET['imgid'];
 
+    try
+    {
+        $sql = $conn->prepare("SELECT * FROM `comments` WHERE imageid = ?") ;
+        $sql->execute($imgid); 
+        $result = $sql->fetchall();
+        echo "<table>";
+        foreach ($result as $key) {
+            echo "<tr>";
+                echo "<td>";
+                    echo $key['user_name'];
+                echo "</td>";
+                echo "<td>";
+                    echo $key['comment'];
+                echo "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+
+    }
+        catch(PDOException $e)
+    {
+        echo "<br> failer ==" . $e->getMessage();
+    }
+
     if(isset($_POST['submit']))
     { 
         if($_POST['comment'])
         {
-            echo $_POST['comment'];
             $comment = $_POST['comment'];
             try
             {
@@ -93,7 +116,7 @@ $username = $_SESSION['login'];
                 border : 1px solid #f1f1f1;
                 border-radius : 50%;
             }
-            .container{
+            .con{
                 padding : 16px;
             }
             .cl{
@@ -105,6 +128,9 @@ $username = $_SESSION['login'];
         h2{
             color: white; 
             font-family: inherit;
+        }
+        table{
+            color : white;
         }
         </style>
 </head>
@@ -137,7 +163,14 @@ $username = $_SESSION['login'];
                 <input type="submit" name = "submit" value = "comment"/>
                 <br><br>
             </div>
+            <table>
+            <?php
+            
+
+            ?>
+        </table>
         </form>
+       
   </div>      
 </body>
 </html>
