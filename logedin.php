@@ -7,106 +7,10 @@ if(!$_SESSION['login'])
         exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        form
-        {
-                background-color: #333;
-                text-align : center;
-        }
-
-        .cl {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .cl a {
-            float: left;
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .drop {
-            float: left;
-            overflow: hidden;
-        }
-
-        .drop .setbtn {
-            font-size: 16px;  
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-
-        .cl a:hover, .drop:hover .setbtn {
-            background-color: red;
-        }
-
-        .cont {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .cont a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .cont a:hover {
-             background-color: #ddd;
-        }
-
-        .drop:hover .cont {
-            display: block;
-        }
-        .main
-        {
-            top: 40%;
-            width: 90%;
-            padding : 5%;
-            height : 60%;
-            background-color: #333;
-        }
-        table{
-            padding : none;
-            position : absolute;
-           width : 50%;
-            height : 40%;
-        }
-        img{
-            /* position : absolute; */
-            /* width : 40%; */
-            /* height : 30%; */
-        }
-        button{
-            display: block;
-            /* position : absolute; */
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="cl">
@@ -150,7 +54,7 @@ if(!$_SESSION['login'])
                                             <?php
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
-                                        alt="">
+                                        alt="" class ="pimg" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
                                         <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>
                                     <?php
