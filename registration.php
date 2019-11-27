@@ -65,13 +65,13 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cll">
+        <div class = "cl">
             <a href="index.php">Go To Welcome</a>
         </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
-    <div class = "cl">
+    <div class = "main">
         
             <form action="registration.php" method ="post">
             <h2>REGISTRATION FORM</h2>

@@ -131,13 +131,13 @@ else
         </style>
     </head>
     <body>
-        <div class = "cll">
+        <div class = "cl">
             <a href="login.php">Go To Login</a>
         </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
-    <div class = "cl">
+    <div class = "main">
         
             <form action="forgotpassword.php" method ="post">
             <h2>FORGOT PASSWORD FORM</h2>

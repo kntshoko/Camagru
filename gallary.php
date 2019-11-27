@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cll">
+        <div class = "cl">
             <a href="logedin.php">Go To Welcome</a>
         </div>         
         <div class = "bd">     

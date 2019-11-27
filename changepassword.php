@@ -64,13 +64,13 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cll">
+        <div class = "cl">
             <a href="logedin.php">Go To Home</a>
         </div>      
     <h1 align = center>
             CAMAGRU
     </h1>
-    <div class = "cl">
+    <div class = "main">
         
             <form action="changepassword.php" method ="post">
             <h2>CHANGE PASSWORD FORM</h2>
