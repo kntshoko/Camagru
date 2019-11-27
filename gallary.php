@@ -37,6 +37,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="camagru.js"></script>
     </head>
     <body>
         <div class = "cl">
@@ -46,100 +47,28 @@ if(isset($_POST['submit'])){
             <h1 align = center>
                 CAMAGRU
             </h1>
-                <div class = "main">
+            <div class = "main">
                 <button type="button" onclick="myfunction()">enable webcam</button>
                 <button type="button" id = "upload" class="upload">upload</button>
-                    <div class="booth">
-                        <?php
-                            if ($filedest != null)
-                            {
-                                echo $filedest;
-                            } 
-                        ?>
-                        <video id="video"  class = "video"></video>
-                        <canvas id = "canvas"  class = "canvas"></canvas>
-                        <a href="#" id = "capture" class="capturbutton">Take photo</a>
-                    
-    </div>
-    <script>
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        function myfunction()
-        {
-            var context = canvas.getContext('2d');
-
-            navigator.getMedia =    navigator.getUserMedia ||
-                                    navigator.webkitGetUserMedia||
-                                    navigator.mozGetUserMedia||
-                                    navigator.msGetUserMedia;
-    
-            navigator.getMedia(
-            {
-                video : true,
-                audio : false
-            },
-            function(stream)
-            {
-                video.srcObject = stream;
-                video.play();
-            },
-            function(error)
-            {
-
-            }
-            );
-
-            document.getElementById('capture').addEventListener('click',function()
-            {
-                canvas.width = video.clientWidth;
-                canvas.height = video.clientWidth;
-                context.drawImage(video, 0,0);
-            });
-
-            document.getElementById("upload").addEventListener("click", function()
-            {
-                var canvas = document.getElementById("canvas");
-                var dataURL = canvas.toDataURL("image/png");
-                var xhr = new XMLHttpRequest();
-    
-                xhr.onload = function()
-                {
-                    console.log(xhr.status, xhr.responseText);
-                };
-    
-                xhr.open('POST', 't.php', true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send("image="+dataURL);
-            });
-        }
-
-        function mydrw(input)
-        {
-            var reader = new FileReader();
-            reader.onload = function (e)
-            {
-                document.getElementById("preview").setAttribute("src",e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-        function setImage()
-        {
-            var image = document.getElementById("preview");
-            
-            context.drawImage(image,0,0);
-        }
-    </script>
-                </div>
-                <div class = "foot">
-                    
+                <div class="booth">
+                    <?php
+                        if ($filedest != null)
+                        {
+                            echo $filedest;
+                        } 
+                    ?>
+                    <video id="video"  class = "video"></video>
+                    <canvas id = "canvas"  class = "canvas"></canvas>
+                    <a href="#" id = "capture" class="capturbutton">Take photo</a>                </div>
+            </div>
+            <div class = "foot">
                 <label for="filetoupload">Select image to upload:</label> 
-                    <input type="file" onchange = "mydrw(this);">
-                    <img id ="preview">
-                    <button onClick = "setImage();"> set image</button>
-                       
-                </div>  
-                <div class="left">
-                </div> 
+                <input type="file" onchange = "mydrw(this);">
+                <img id ="preview">
+                <button onClick = "setImage();"> set image</button>
+            </div>  
+            <div class="left">
+            </div> 
         </div>
     </body>
 </html>
