@@ -23,85 +23,20 @@
                 }
                 else
                 {
-                    $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' AND `password` = ? LIMIT 1");/* OR `email` = '$login' AND `password` = ?  */
-                    $password = md5($password);
-                    $sql->execute([$password]);
-                    $row = $sql->fetch();
-                    if (empty($row) == true)
+                    if ($row['password'] == md5($password))
                     {
-                        $sql = $conn->prepare("SELECT id FROM users WHERE `email` = '$login' AND `password` = ?  LIMIT 1");/* OR  */
-                        $password = md5($password);
-                        $sql->execute([$password]);
-                        $row = $sql->fetch();
-                        if (empty($row) == true)
+                        if($row['account'] == 1)
                         {
-                            $mg = "check inputs";
+                            //login and set session variables
                         }
                         else
                         {
-                            $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = ? LIMIT 1");
-                            $sql->execute(1);
-                            $row = $sql->fetch();
-                            if (empty($row) == true)
-                            {
-                                $sql = $conn->prepare("SELECT id FROM users WHERE `email` = '$login' AND `account` = ? LIMIT 1");
-                                $sql->execute(1);
-                                $row = $sql->fetch();
-                                if (empty($row) == true)
-                                {
-                                    $mg = "account not activeted please check your email";
-                                }
-                                else
-                                {
-                                    session_start();
-                                    $_SESSION['login'] = $_POST['login'];
-                                    $_SESSION['password'] = md5($_POST['password']);
-                                    header('Location: logedin.php');
-                                    exit();
-                                }
-                            }
-                            else
-                            {
-                                session_start();
-                                $_SESSION['login'] = $_POST['login'];
-                                $_SESSION['password'] = md5($_POST['password']);
-                                header('Location: logedin.php');
-                                exit();
-                            }
+                            $mg = "Account is not activated please check your mail box";
                         }
                     }
                     else
                     {
-
-                        $sql = $conn->prepare("SELECT id FROM users WHERE `user_name` = '$login' AND `account` = 1 LIMIT 1");
-                        $sql->execute();
-                        $row = $sql->fetch();
-                        if (empty($row) == true)
-                        {
-                            $sql = $conn->prepare("SELECT id FROM users WHERE `email` = '$login' AND `account` = ? LIMIT 1");
-                            $sql->execute(1);
-                            $row = $sql->fetch();
-                            if (empty($row) == true)
-                            {
-                                $mg = "account not activeted please check your email";
-                            }
-                            else
-                            {
-                                session_start();
-                                $_SESSION['login'] = $_POST['login'];
-                                $_SESSION['password'] = md5($_POST['password']);
-                                header('Location: logedin.php');
-                                exit();
-                            }
-                        }
-                        else
-                        {
-                            session_start();
-                            $_SESSION['login'] = $_POST['login'];
-                            $_SESSION['password'] = md5($_POST['password']);
-                            header('Location: logedin.php');
-                            exit();
-                        }
+                        $mg = "Input are incorrect";
                     }
                 }
             }
