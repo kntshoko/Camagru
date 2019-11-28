@@ -1,12 +1,12 @@
 <?php
 
-session_start();
+ session_start();
 
-if ($_SESSION['login'])
-{
-    header('loction: logedin.php');
-    die();
-}
+    if ($_SESSION['login'])
+    {
+        header('location: logedin.php');
+       exit();
+    }
 ?>
 
 

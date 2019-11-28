@@ -139,7 +139,7 @@ padding : 0%;
 background-color: #333;
 }
 h2{
-color: white; 
+color: red; 
 font-family: inherit;
 }
 h1{
@@ -198,6 +198,8 @@ width :50%;
     position :absolute;
     display : inline-block;
     text-align : center;
+    margin: auto;
+    border: 5px peru;
 }
  td{
     text-align : center;
@@ -206,8 +208,6 @@ width :50%;
     color : #f1f1f1;
 } 
 table{
-    width :30%;
-    height : 30%; 
     text-align : center;
     border : 4px white; 
     color : #f1f1f1;

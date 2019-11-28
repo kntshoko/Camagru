@@ -2,6 +2,8 @@
 <?php
     $mg = "";
     session_start();
+    //print($_SESSION['login']['notification']);
+    //die();
     if(!$_SESSION['login'])
     {
         header('Location: index.php');
@@ -58,7 +60,7 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cll">
+        <div class = "cl">
             <a href="logedin.php">Go To Home</a>
         </div>      
     <h1 align = center>
@@ -67,7 +69,7 @@
     <div class = "cl">
         
             <form action="preferences.php" method ="post">
-            <h2>PERFERENCES FORM</h2>
+            <h3 style = "color : white">PERFERENCES</h3>
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">
                  </div>   
@@ -86,10 +88,14 @@
                     <br>
                     <input type="text" name = "username" />
                     <br><br>
-                    <label for="likes">like notification  </label>   
-                    <br>
-                    <br><br>
-                    <label for="comments">comment notification  </label>   
+                    <label for="notification"> set notification on
+                        <input type="checkbox" name="notification" <?php
+                            if ($_SESSION['login']['notification'] == 1)
+                            {
+                                echo "checked";
+                            }
+                        ?>>
+                    </label>   
                     <br>
                     <br>
                     <label for="username"> Password </label> 

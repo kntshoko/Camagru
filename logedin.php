@@ -52,11 +52,14 @@ if(!$_SESSION['login'])
                                  echo "<tr>";
                                 echo "<td>";
                                     ?>
-                                        <img src="
+                                    <div class ="imgcon">
+                                          <img src="
                                             <?php
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
                                         alt="" class ="pimg" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
+                                    </div>
+                                      
                                         <br><br>
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
                                         <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>

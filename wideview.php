@@ -61,10 +61,9 @@
                  ?>
             </h2>
              <div class = "con">
-                <label for="newpassword"> send : </label> 
+                <label for="comment"> send comment : </label> 
                 <br>
                 <input type="text" name = "comment" />
-                <br><br>
                 <br>
                 <input type="submit" name = "submit" value = "comment"/>
                 <br><br>
@@ -76,7 +75,7 @@
                     $sql = $conn->prepare("SELECT * FROM `comments` WHERE imageid = ?") ;
                     $sql->execute($imgid); 
                     $result = $sql->fetchall();
-                    // echo "<table>";
+                     echo "<table>";
                     foreach ($result as $key) {
                         echo "<tr>";
                             echo "<td>";
@@ -87,7 +86,7 @@
                             echo "</td>";
                         echo "</tr>";
                     }
-                    // echo "</table>";
+                     echo "</table>";
             
                 }
                     catch(PDOException $e)
