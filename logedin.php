@@ -11,6 +11,7 @@ if(!$_SESSION['login'])
 <head>
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="camagru.js"></script>
 </head>
 <body>
     <div class="cl">
@@ -55,48 +56,16 @@ if(!$_SESSION['login'])
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
                                         alt="" class ="pimg" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
+                                        <br><br>
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
                                         <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>
                                     <?php
                                 echo "</td>";
                                 echo "</tr>";
-                         //  $i++;
                          }
                         
                     echo "</table>";
                 ?>
     </div>
-    <script>
-
-    
-function mylikes(id) {
-  var xhttp = new XMLHttpRequest();
-    var x =  document.getElementById(id)
-
-  xhttp.open("POST", "likes.php", true);
-  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  console.log(x.value);
-  xhttp.send("value="+x.value);
-}
-
-
-            /////check same as the one above
-
-    /*        document.getElementById("upload").addEventListener("click", function() {
-    var canvas = document.getElementById("canvas");
-    var dataURL = canvas.toDataURL("image/png");
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        console.log(xhr.status, xhr.responseText);
-    };
-    
-    xhr.open('POST', 't.php', true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("image="+dataURL);
-    // 
-    }*/
-
-            ////
-    </script>
 </body>
 </html>

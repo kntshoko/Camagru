@@ -66,3 +66,13 @@ function setImage()
     
     context.drawImage(image,0,0);
 }
+
+function mylikes(id) {
+    var xhttp = new XMLHttpRequest();
+      var x =  document.getElementById(id)
+  
+    xhttp.open("POST", "likes.php", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    console.log(x.value);
+    xhttp.send("value="+x.value);
+  }

@@ -15,7 +15,7 @@
             }
             else
             {
-                $sql = $conn->prepare("SELECT id FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
+                $sql = $conn->prepare("SELECT * FROM users WHERE `user_name`= '$login' OR `email` = '$login' LIMIT 1");
                 $sql->execute();
                 $row = $sql->fetch();
                 if (empty($row) == true)
