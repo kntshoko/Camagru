@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if ($_SESSION['login'])
+{
+    header('loction: logedin.php');
+    die();
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">

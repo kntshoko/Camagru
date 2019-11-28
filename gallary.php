@@ -1,4 +1,14 @@
 
+<?php
+
+session_start();
+if(!$_SESSION['login'])
+{
+        header('Location: index.php');
+        exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,15 +31,9 @@
                 <button type="button" onclick="myfunction()">enable webcam</button>
                 <button type="button" id = "upload" class="upload">upload</button>
                 <div class="booth">
-                    <?php
-                        if ($filedest != null)
-                        {
-                            echo $filedest;
-                        } 
-                    ?>
                     <video id="video"  class = "video"></video>
-                    <canvas id = "canvas"  class = "canvas"></canvas>
                     <a href="#" id = "capture" class="capturbutton">Take photo</a>
+                    <canvas id = "canvas"  class = "canvas"></canvas>
                 </div>
             </div>
             <div class = "foot">

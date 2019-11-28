@@ -3,7 +3,7 @@
 session_start();
 if(!$_SESSION['login'])
 {
-        header('Location: index.php');
+        header('Location: logedin.php');
         exit();
 }
 ?>
@@ -26,11 +26,12 @@ if(!$_SESSION['login'])
         </div> 
         <a href="logout.php">LOGOUT</a>
     </div>  
-    <h1 align = center>
-            CAMAGRU
-    </h1>   
-    <div class = "main">
-    <?php                         
+               <h1 align = center>
+                CAMAGRU
+            </h1>       
+        <div class = "main">
+
+        <?php                         
                     require_once ("setup.php");
                     require_once("config.php");   
                         

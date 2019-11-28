@@ -30,7 +30,7 @@ function myfunction()
     {
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
-        context.drawImage(video, 0,0);
+        context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
     });
 
     document.getElementById("upload").addEventListener("click", function()
