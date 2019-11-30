@@ -4,6 +4,7 @@
     session_start();
     //print($_SESSION['login']['notification']);
     //die();
+   
     if(!$_SESSION['login'])
     {
         header('Location: index.php');
@@ -14,6 +15,7 @@
         if (isset($_POST['submit']))
         {
             require_once("config.php"); 
+            
             if($_POST['email'] != null)
             {
                 $sql = $conn->prepare("SELECT id FROM users WHERE  `email` = ? LIMIT 1");
@@ -44,9 +46,34 @@
                     $mg = "username already exists";
                 }
             }
+
+            if(($_POST['notification'] == '1'))
+            {
+                
+                try {
+                    $sql = $conn->prepare("UPDATE `users` SET `notification`= 1 WHERE `id` = ?");
+                    $sql->execute($_SESSION['login']['id']); 
+                    $_SESSION['login']['notification'] = 1;
+                    $mg = "changed notification";
+                } catch (PDOExeption $e) {
+                    $mg = $e->getMessage;
+                }
+            }
+            else if(($_POST['notification'] != '1'))
+            {
+                
+                try {
+                    $sql = $conn->prepare("UPDATE `users` SET `notification`= 0 WHERE `id` = ?");
+                    $sql->execute($_SESSION['login']['id']); 
+                    $_SESSION['login']['notification'] = 0;
+                    $mg = "changed notification";
+                } catch (PDOExeption $e) {
+                    $mg = $e->getMessage;
+                }
+                
+            }
+
             $conn = null;
-            
-            $mg = "yo";
         }
     }
 ?>
@@ -94,7 +121,7 @@
                             {
                                 echo "checked";
                             }
-                        ?>>
+                        ?> value = '1'>
                     </label>   
                     <br>
                     <br>
@@ -102,7 +129,7 @@
                     <br>
                     <input type="text" name = "username" />
                     <br><br>
-                    <input type="submit" name = "submit" value = "register"/>
+                    <input type="submit" name = "submit" value = "save chanes"/>
                     <br><br>
                 </div>
             </form>

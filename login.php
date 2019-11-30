@@ -62,7 +62,7 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    <div class = "cl">
+    <div class = "navbar">
             <a href="index.php">Go To Welcome</a>
             <a href="registration.php">Register Account</a>
             <a href="forgotpassword.php">Forgot Password</a>
@@ -72,10 +72,10 @@
     </h1>
     <div class = "main">
         
-            <form action="login.php" method ="post">
+            <form action="login.php" method ="post" class ="login">
             <h2>LOGIN FORM</h2>
-                 <div class="imgcon">
-                 <img src="image.png" alt = "limg" class ="limg">
+                 <div class="imagecontainer">
+                 <img src="image.png" alt = "limg" class ="loginimage">
                  </div>   
                  <h2> 
                     <?php 
@@ -83,7 +83,7 @@
                      echo $mg . "<br>";
                      ?>
                 </h2>
-                 <div class = "con">
+                 <div class = "container">
                        <label for="login">User Name or Email:</label> <br> <input type="text" name = "login"/><br><br>
                        <label for="password">Password:</label> <br> <input type="password" name = "password"/><br><br> 
                         <input type="submit" name = "logedin" value = "login"/>

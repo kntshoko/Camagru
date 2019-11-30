@@ -25,9 +25,6 @@
                  
                 if (empty($row) == true)
                 {
-                   // var_dump($row);
-
-
                     $token = substr(str_shuffle("123456789".
                     "MNBVCXZASDFGHJKL"),0,10);
                          $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`,`account`,`notification`) 
@@ -53,8 +50,6 @@
     }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +60,7 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cl">
+        <div class = "navbar">
             <a href="index.php">Go To Welcome</a>
         </div>      
     <h1 align = center>
@@ -73,10 +68,10 @@
     </h1>
     <div class = "main">
         
-            <form action="registration.php" method ="post">
+            <form action="registration.php" method ="post" class = "registra">
             <h2>REGISTRATION FORM</h2>
-            <div class="imgcon">
-                     <img src="image.png" alt = "limg" class ="limg">
+            <div class="imagecontainer">
+                     <img src="image.png" alt = "limg" class ="loginimage">
                  </div>   
                  <h2> 
                     <?php 
@@ -84,7 +79,7 @@
                      echo $mg . "<br>";
                      ?>
                 </h2>
-                 <div class = "con">
+                 <div class = "container">
                     <label for="username">User Name : </label>   
                     <br>
                     <input type="text" name = "username" />

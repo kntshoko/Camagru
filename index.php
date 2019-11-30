@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class = "cl">
+        <div class = "navbar">
             <a href="login.php">Login</a>
             <a href="registration.php">Register Account</a>
         </div>      
@@ -48,8 +48,8 @@
                                 echo "<tr>";
                                 echo "<td>";
                                     ?>
-                                        <div class="imgcon">
-                                            <img src="<?php echo "uploads/".$row['imagename'];?>" alt = "pimg" class ="pimg">
+                                        <div class="imagecontainer">
+                                            <img src="<?php echo "uploads/".$row['imagename'];?>" alt = "pimg" class ="postimage">
                                         </div>   
                                         <?php
                                 echo "</td>";
@@ -58,9 +58,6 @@
                         echo "</tr>";
                     echo "</table>";
                 ?>
-            </div>
-            <div class = "controls">
-
             </div>
         </div>
     </body>

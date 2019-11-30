@@ -25,7 +25,7 @@ $dbName = "camagru";
             `user_name` VARCHAR(20) NOT NULL , 
             `email` VARCHAR(100) NOT NULL ,
             `password` VARCHAR(100) NOT NULL ,
-            `token` VARCHAR(10) NOT NULL ,
+            `token` VARCHAR(10) DEFAULT NULL ,
             `account` INT(1) UNSIGNED NOT NULL ,
             `notification` INT(1) UNSIGNED NOT NULL ,
             PRIMARY KEY (`id`))");

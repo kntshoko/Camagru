@@ -20,30 +20,33 @@ if(!$_SESSION['login'])
         <script src="camagru.js"></script>
     </head>
     <body>
-        <div class = "cl">
+        <div class = "navbar">
             <a href="logedin.php">Go To Welcome</a>
-        </div>         
-        <div class = "bd">     
-            <h1 align = center>
+            <a href="#">My Pictures</a>
+            <a href="logout.php">LOGOUT</a>
+        </div>   
+        <h1 align = center>
                 CAMAGRU
-            </h1>
-            <div class = "main">
-                <button type="button" onclick="myfunction()">enable webcam</button>
-                <button type="button" id = "upload" class="upload">upload</button>
+            </h1>      
+        <div class = "main">     
+            
+            <div class = "gallery">
+                <button  onclick="myfunction()">enable webcam</button>
+                <button  id = "upload" class="upload">upload</button>
                 <div class="booth">
                     <video id="video"  class = "video"></video>
                     <a href="#" id = "capture" class="capturbutton">Take photo</a>
                     <canvas id = "canvas"  class = "canvas"></canvas>
                 </div>
-            </div>
-            <div class = "foot">
-                <label for="filetoupload">Select image to upload:</label> 
+                <div class ="stickers">
+                    <p>stickers</p>
+                    <label for="filetoupload">Select image to upload:</label> 
+ 
+                </div>
                 <input type="file" onchange = "mydrw(this);">
-                <img id ="preview">
+                <img id ="preview" class = "preview">
                 <button onClick = "setImage();"> set image</button>
             </div>  
-            <div class="left">
-            </div> 
         </div>
     </body>
     <script src="camagru.js"></script>

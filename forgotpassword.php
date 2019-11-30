@@ -56,82 +56,11 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-        <style>
-            body{
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            form{
-                background-color: #333;
-                text-align : center;
-            }
-            .cll {
-            overflow: hidden;
-            background-color: #333;
-            }
-            .cll a:hover{
-            background-color: red;
-            }
-            .cll a {
-            float: left;
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            }
-            .cl label  
-            {
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            }
-
-            input[type=text], input[type=password]{
-                width : 60%;
-                padding : 12px 20px;
-                margin : 8px 0;
-                display : inline-block;
-                border : 1px solid #ccc;
-                box-sizing : border-box;
-            }
-            input[type=submit]{
-                width : 30%;
-                padding : 10px 18px;
-                margin : 8px 0;
-                display : inline-block;
-                border : 1px solid #ccc;
-                box-sizing : border-box;
-                color: white;
-                background-color : #847ef7;
-            }
-            .imgcon{
-                text-align :center;
-                margin : 24px 0 12px 0;
-            }
-            img.limg{
-                width : 40%;
-                border : 1px solid #f1f1f1;
-                border-radius : 50%;
-            }
-            .container{
-                padding : 16px;
-            }
-            .cl{
-            position :absolute;
-            left : 30%;
-            height : 60%;
-            width : 40%;
-        }
-        h2{
-            color: white; 
-            font-family: inherit;
-        }
-        </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="camagru.js"></script>
     </head>
     <body>
-        <div class = "cl">
+        <div class = "navbar">
             <a href="login.php">Go To Login</a>
         </div>      
     <h1 align = center>
@@ -141,8 +70,8 @@ else
         
             <form action="forgotpassword.php" method ="post">
             <h2>FORGOT PASSWORD FORM</h2>
-            <div class="imgcon">
-                     <img src="image.png" alt = "limg" class ="limg">
+            <div class="imagecontainer">
+                     <img src="image.png" alt = "limg" class ="loginimage">
                  </div>   
                  <h2> 
                     <?php 
@@ -151,7 +80,7 @@ else
                      ?>
                 </h2>
                 
-                 <div class = "con">
+                 <div class = "container">
                     <label for="email">Email  </label>  
                     <br>
                     <input type="text" name = "email" />

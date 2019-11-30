@@ -14,11 +14,11 @@ if(!$_SESSION['login'])
     <script src="camagru.js"></script>
 </head>
 <body>
-    <div class="cl">
+    <div class="navbar">
         <a href="gallary.php">GALLARY</a>
-        <div class="drop">
+        <div class="dropdown">
             <button class="setbtn">SETTINGS</button>
-            <div class="cont">
+            <div class="dropcontainer">
                 <a href="changepassword.php">change password</a>
                 <a href="preferences.php">preferences</a>
                 <a href="deleteaccount.php">Delete account</a>
@@ -47,17 +47,17 @@ if(!$_SESSION['login'])
                     echo "<table>";
                        
                         $i = 0;
-                       // while ($i < 4){
+
                             foreach ($result as $row) {
                                  echo "<tr>";
                                 echo "<td>";
                                     ?>
-                                    <div class ="imgcon">
+                                    <div class ="imagecontainer">
                                           <img src="
                                             <?php
                                                 echo "uploads/".$row['imagename'];
                                             ?>" 
-                                        alt="" class ="pimg" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
+                                        alt="" class ="postimage" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
                                     </div>
                                       
                                         <br><br>

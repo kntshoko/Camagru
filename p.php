@@ -9,27 +9,27 @@
     require_once("config.php"); 
     $username = $_SESSION['login'];
 
-    $imgname = $_GET['imgname'];
-    $imgid = $_GET['imgid'];
+ $imgname = 'camagru5ddfea139d5c0.png';
+    $iimgid=1;
 
 
 
-    if(isset($_POST['submit']))
-    { 
-        if($_POST['comment'])
-        {
-            $comment = $_POST['comment'];
-            try
-            {
-                $sql = $conn->prepare("INSERT INTO comments ( `user_name`, `imageid`,`comment`) VALUES (?,?,?)");
-                $sql->execute([$username,$imgid,$comment]);
-            }
-            catch(PDOException $e)
-            {
-            echo "<br> failer ==" . $e->getMessage();
-            }
-        }
-    }
+    // if(isset($_POST['submit']))
+    // { 
+    //     if($_POST['comment'])
+    //     {
+    //         $comment = $_POST['comment'];
+    //         try
+    //         {
+    //             $sql = $conn->prepare("INSERT INTO comments ( `user_name`, `imageid`,`comment`) VALUES (?,?,?)");
+    //             $sql->execute([$username,$imgid,$comment]);
+    //         }
+    //         catch(PDOException $e)
+    //         {
+    //         echo "<br> failer ==" . $e->getMessage();
+    //         }
+    //     }
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -71,25 +71,25 @@
             </div>
             <table>
                 <?php
+                 $iimgid=1;
         try
-        {
-            $sql = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` = ?") ;
-            $mg = $imgid;
-            //$sql->execute($imgid); 
-            $result = $sql->fetchall();
-            echo "<table>";
-            foreach ($result as $key)
-            {
-                echo "<tr>";
-                    echo "<td>";
-                        echo $key['user_name'];
-                    echo "</td>";
-                    echo "<td>";
-                        echo $key['comment'];
-                    echo "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
+    {
+        $sql = $conn->prepare("SELECT * FROM `comments` WHERE imageid = 1") ;
+        echo "yoo"; 
+        $sql->execute($imgid);
+        
+        $result = $sql->fetchall();
+         echo "<table>";
+        foreach ($result as $key) {
+            echo "<tr>";
+                echo "<td>";
+                    echo $key['user_name'];
+                echo "<br>";
+                    echo $key['comment'];
+                echo "</td>";
+            echo "</tr>";
+        }
+         echo "</table>";
 
     }
         catch(PDOException $e)
