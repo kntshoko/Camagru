@@ -25,14 +25,15 @@ if(!$_SESSION['login'])
             <a href="#">My Pictures</a>
             <a href="logout.php">LOGOUT</a>
         </div>   
-        <h1 align = center>
+        <h1 style = "text-align : center">
                 CAMAGRU
-            </h1>      
+            </h1> 
+            <p id = "demo"></p>     
         <div class = "main">     
             
             <div class = "gallery">
                 <button  onclick="myfunction()">enable webcam</button>
-                <button  id = "upload" class="upload">upload</button>
+                <button  onclick="upload()" id = "upload" class="upload">upload</button>
                 <div class="booth">
                     <video id="video"  class = "video"></video>
                     <a href="#" id = "capture" class="capturbutton">Take photo</a>

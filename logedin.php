@@ -38,20 +38,14 @@ if(!$_SESSION['login'])
                     try{
                             $sql = $conn->prepare("SELECT * FROM gallery") ;
                             $sql->execute(); 
-                            $result = $sql->fetchall();
-                    }
-                    catch(PDOExceptipn $e)
-                    {
-                    echo $e->getMessage();
-                    }  
-                    echo "<table>";
-                       
-                        $i = 0;
+                            $result = $sql->fetchall(); 
+                            echo "<table>";
 
                             foreach ($result as $row) {
                                  echo "<tr>";
                                 echo "<td>";
                                     ?>
+                                    <p><?php echo $row['user_name'];?></p>
                                     <div class ="imagecontainer">
                                           <img src="
                                             <?php
@@ -59,16 +53,21 @@ if(!$_SESSION['login'])
                                             ?>" 
                                         alt="" class ="postimage" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
                                     </div>
-                                      
-                                        <br><br>
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
                                         <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>
                                     <?php
                                 echo "</td>";
+
                                 echo "</tr>";
                          }
                         
                     echo "</table>";
+                    }
+                    catch(PDOExceptipn $e)
+                    {
+                    echo $e->getMessage();
+                    }  
+                   
                 ?>
     </div>
 </body>

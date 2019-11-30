@@ -7,7 +7,7 @@
     }
     require_once ("setup.php");
     require_once("config.php"); 
-    $username = $_SESSION['login'];
+    $username = $_SESSION['login']['user_name'];
 
     $imgname = $_GET['imgname'];
     $imgid = $_GET['imgid'];
@@ -49,9 +49,9 @@
             CAMAGRU
         </h1>
  <div class = "main">
-        
+
         <form action="wideview.php?imgid=<?php echo $imgid?>&imgname=<?php echo  $imgname?>" method ="post"  class = 'commentform'>
-        <h2>commentes</h2>
+        
         <div class="imagecontainer">
                  <img src="uploads/<?php echo $imgname?>" alt = "pimg" class ="postimage">
              </div>   
@@ -73,11 +73,9 @@
                 <?php
         try
         {
-            $sql = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` = ?") ;
-            $mg = $imgid;
-            //$sql->execute($imgid); 
+            $sql = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` = $imgid") ;
+            $sql->execute(); 
             $result = $sql->fetchall();
-            echo "<table>";
             foreach ($result as $key)
             {
                 echo "<tr>";
@@ -89,13 +87,12 @@
                     echo "</td>";
                 echo "</tr>";
             }
-            echo "</table>";
 
-    }
-        catch(PDOException $e)
-    {
-        echo "<br> failer ==" . $e->getMessage();
-    }
+        }
+            catch(PDOException $e)
+        {
+            echo "<br> failer ==" . $e->getMessage();
+        }
                 ?>
         </table>
         </form>   

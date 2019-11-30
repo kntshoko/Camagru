@@ -72,9 +72,8 @@ body
     background-color: rgb(159, 213, 238); 
     margin: auto;
     width: 80%;
-    height: 80%;
     border : 1px solid #f1f1f1;
-    border-radius : 10%;
+    border-radius : 5%;
 }
 /**************** main ******************/
 
@@ -136,14 +135,15 @@ body
 }
 .commentcontainer{
     position :inherit;
-    border : 1px solid  black; ;
+    border : 1px solid   rgb(239, 246, 250);
+    border-radius : 10%;
 }
 .registration input[type=text], input[type=password]{
     width : 60%;
     padding : 12px 20px;
     margin : 8px 0;
     display : inline-block;
-    border : 1px solid   rgb(239, 246, 250); ;
+    border : 1px solid   rgb(239, 246, 250); 
     box-sizing : border-box;
 }
 
@@ -223,3 +223,12 @@ img.postimage{
         width : 100%;
     }
 /***************** gallery ****************/
+/****************** table *****************/
+table{
+    text-align :center;
+    margin: auto;
+}
+table tr ,td{
+    border : 1px solid #f1f1f1;
+}
+/****************** table *****************/

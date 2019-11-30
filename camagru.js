@@ -33,23 +33,23 @@ function myfunction()
         context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
     });
 
-    document.getElementById("upload").addEventListener("click", function()
-    {
-        var canvas = document.getElementById("canvas");
-        var dataURL = canvas.toDataURL("image/png");
-        var xhr = new XMLHttpRequest();
-
-        xhr.onload = function()
-        {
-            console.log(xhr.status, xhr.responseText);
-        };
-
-        xhr.open('POST', 't.php', true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("image="+dataURL);
-    });
+ 
 }
+function upload()
+{
+    var canvas = document.getElementById("canvas");
+    var dataURL = canvas.toDataURL("image/png");
+    var xhr = new XMLHttpRequest();
 
+    xhr.onload = function()
+    {
+        console.log(xhr.status, xhr.responseText);
+    };
+
+    xhr.open('POST', 't.php', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("image="+dataURL);
+}
 function mydrw(input)
 {
     var reader = new FileReader();
