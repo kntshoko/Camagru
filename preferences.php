@@ -2,8 +2,7 @@
 <?php
     $mg = "";
     session_start();
-    //print($_SESSION['login']['notification']);
-    //die();
+
    
     if(!$_SESSION['login'])
     {
@@ -32,15 +31,27 @@
                     $mg = "email already exists";
                 }
             }
-            if($_POST['username'] != null)
-            {
+            $uname = $_POST['username']; 
+            if($uname != null)
+            { 
+               
                 $sql = $conn->prepare("SELECT id FROM users WHERE  `user_name` = ? LIMIT 1");
-                $sql->execute($_POST['username']);
+                $sql->execute($uname);
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    $sql = $conn->prepare("UPDATE users SET `user_name` = ?  WHERE `user_name` = ?");
-                    $sql->execute([$_POST['username'],$_POST['username']]); 
+                   
+                    $sql = $conn->prepare("UPDATE users SET `user_name` = $uname   WHERE `id` = $id");
+                    $sql->execute(); 
+                    echo "yooo";
+                    $sql = $conn->prepare("UPDATE likes SET `user_name` = $uname   WHERE `user_name` = ?");
+                    $sql->execute($_SESSION['login']['user_name']); 
+                    $sql = $conn->prepare("UPDATE commets SET `user_name` = $uname   WHERE `user_name` = ?");
+                    $sql->execute($_SESSION['login']['user_name']); 
+                    $sql = $conn->prepare("UPDATE gallery SET `user_name` = $uname   WHERE `user_name` = ?");
+                    $sql->execute($_SESSION['login']['user_name']); 
+
+                    $_SESSION['login']['user_name'] = $uname;
                 }
                 else
                 {
@@ -55,7 +66,6 @@
                     $sql = $conn->prepare("UPDATE `users` SET `notification`= 1 WHERE `id` = $id");
                     $sql->execute(); 
                     $_SESSION['login']['notification'] = 1;
-                    $mg = "changed notification";
                 } catch (PDOExeption $e) {
                     $mg = $e->getMessage;
                 }
@@ -68,7 +78,6 @@
                     $sql = $conn->prepare("UPDATE `users` SET `notification`= 0 WHERE `id` = $id");
                     $sql->execute(); 
                     $_SESSION['login']['notification'] = 0;
-                    $mg = $_SESSION['login']['id'];
                 } catch (PDOExeption $e) {
                     $mg = $e->getMessage;
                 }
@@ -130,7 +139,7 @@
                     <br>
                     <label for="username"> Password </label> 
                     <br>
-                    <input type="text" name = "username" />
+                    <input type="password" name = "password" />
                     <br><br>
                     <input type="submit" name = "submit" value = "save chanes"/>
                     <br><br>
