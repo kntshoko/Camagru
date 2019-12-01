@@ -44,6 +44,7 @@
     <body>  
         <div class = "navbar">
             <a href="logedin.php">Go To Home</a>
+            <a href="logout.php">LOGOUT</a>
         </div>      
         <h1 align = center>
             CAMAGRU
