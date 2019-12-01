@@ -22,7 +22,16 @@ if(!$_SESSION['login'])
     <body>
         <div class = "navbar">
             <a href="logedin.php">Go To Welcome</a>
+
             <a href="#">My Pictures</a>
+            <div class="dropdown">
+            <button class="setbtn">SETTINGS</button>
+            <div class="dropcontainer">
+                <a href="changepassword.php">change password</a>
+                <a href="preferences.php">preferences</a>
+                <a href="deleteaccount.php">Delete account</a>
+            </div>
+        </div> 
             <a href="logout.php">LOGOUT</a>
         </div>   
         <h1 style = "text-align : center">

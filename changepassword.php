@@ -12,40 +12,43 @@
     {
         if (isset($_POST['submit']))
         {
+            require_once ("setup.php");
             require_once("config.php");
-            $sql = $conn->prepare("SELECT id FROM users WHERE `password`= ? LIMIT 1");
-            $sql->execute(md5($_POST['currentpassword']));
-            $row = $sql->fetch();
-            if (empty($row) != true)
+            
+
+            if (!(md5($_POST['currentpassword']) == $_SESSION['login']['password']))
             {
-                if ( $_POST['conpassword'] == null || $_POST['newpassword'] == null)
+
+                $mg = "password incorect";
+            }
+            else
+            {
+                echo "currentpassword  == ".$_POST['currentpassword']."<br>";
+                echo "currentpassword  == ".md5($_POST['currentpassword'])."<br>";
+                echo "password  -----------> ".$_SESSION['login']['password']."<br>";
+                if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
                 {
                     $mg = "check your input";
                 }
                 else
                 {
-                    if ($_POST['conpassword'] == $_POST['newpassword'])
+                    if ($_POST['cpassword'] == $_POST['npassword'])
                     {
-                        $email = $_SESSION['email'];
-                        $password = $_SESSION['password'];
-                        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `password` = '$password' AND `email` = '$email'");
-                        $sql->execute([md5($_GET['conpassword'])]); 
-                        $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'");
-                        $sql->execute([""]); 
-                        $_SESSION['password'] = md5($_GET['conpassword']);
-                        header('Location: logedin.php');
+                        $id = $_SESSION['login']['id'];
+                        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE  `id` = '$id'");
+                        $sql->execute(md5($_GET['conpassword'])); 
+                        print_r($sql);
+                        die();
+                        $_SESSION['login']['password'] = md5($_GET['cpassword']);
+                        header('Location: logout.php');
                         exit();
                     }
                     else
                     {
-                        $mg = "Passsword do not match";
+                        $mg = "new  Passswords do not match";
                     }
                 } 
                 $conn = NULL;
-            }
-            else
-            {
-                $mg = "Passsword do not match";
             }
         }
     }
@@ -98,13 +101,13 @@
                     <br>
                     <input type="password" name = "currentpassword" />
                     <br><br>
-                    <label for="newpassword"> New Password : </label> 
+                    <label for="npassword"> New Password : </label> 
                     <br>
-                    <input type="password" name = "newpassword" />
+                    <input type="password" name = "npassword" />
                     <br><br>
-                    <label for="conpassword">Confirm New Password :  </label>   
+                    <label for="cpassword">Confirm New Password :  </label>   
                     <br>
-                    <input type="password" name = "conpassword" />
+                    <input type="password" name = "cpassword" />
                     <br><br>
                     <br>
                     <input type="submit" name = "submit" value = "register"/>
