@@ -3,7 +3,7 @@ session_start();
 require_once ("setup.php");
 require_once("config.php"); 
 $imageid = $_POST['value'];
-$username = $_SESSION['login'];
+$username = $_SESSION['login']['user_name'];
 echo $imageid;
 try{
         $sql = $conn->prepare("SELECT * FROM likes WHERE `user_name`= ? AND `imageid` = ?");
