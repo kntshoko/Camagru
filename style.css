@@ -175,6 +175,7 @@ img.postimage{
     border : 1px solid #f1f1f1;
     border-radius : 10%;
 }
+ 
 
 /****************** images ***************/
 
@@ -219,8 +220,15 @@ img.postimage{
     }
    .gallery .stickers
     {
+        position: inherit;
         background-color:  rgb(159, 225, 255); 
         width : 100%;
+    }
+    .stick{
+        width : 10%;
+        height: 8%;
+        border : 1px solid #f1f1f1;
+        border-radius : 10%;
     }
 /***************** gallery ****************/
 /****************** table *****************/

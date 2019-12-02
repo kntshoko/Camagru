@@ -17,13 +17,24 @@
             
             if($_POST['email'] != null)
             {
+                $email = $_POST['email'];
                 $sql = $conn->prepare("SELECT id FROM users WHERE  `email` = ? LIMIT 1");
                 $sql->execute($_POST['email']);
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    $sql = $conn->prepare("UPDATE users SET `email` = ?  WHERE `email` = ?");
-                    $sql->execute([$_POST['email'],$_POST['email']]); 
+                    $token = substr(str_shuffle("123456789".
+                    "MNBVCXZASDFGHJKL"),0,10);
+                    $sql = $conn->prepare("UPDATE users SET `token` = ? WHERE `id` = ?");
+                    $sql->execute([$token,$id]);
+                    $to = $email;
+                    $subject = "CAMAGRU Update Email Confirmation";
+                    $message = "click on the link below<br><a href ='http://localhost:8080/Camagru/confirmemail.php?email=$email&id=$id&token=$token'>confrm account</a>";
+                    $headers = 'From: nonreply'."\r\n";
+                    $headers .= "MIME-Version: 1.0"."\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+                    mail($to,$subject,$message,$headers);
+                    $mg ="mail sent check your mailbox";
                 }
                 else
                 {

@@ -67,6 +67,36 @@ function setImage()
     context.drawImage(image,0,0);
 }
 
+function stick1()
+{
+    var context = canvas.getContext('2d');
+    var image = document.getElementById("sticker1");
+    
+    context.drawImage(image,0,0);
+}
+function stick2()
+{
+    var context = canvas.getContext('2d');
+    var image = document.getElementById("sticker2");
+    
+    context.drawImage(image,0,0);
+}
+function stick3()
+{
+    var context = canvas.getContext('2d');
+    var image = document.getElementById("sticker3");
+    
+    context.drawImage(image,0,0);
+}
+
+function stick4()
+{
+    var context = canvas.getContext('2d');
+    var image = document.getElementById("sticker4");
+    
+    context.drawImage(image,0,0);
+}
+
 function mylikes(id) {
     var xhttp = new XMLHttpRequest();
       var x =  document.getElementById(id)

@@ -50,9 +50,28 @@ if(!$_SESSION['login'])
                 </div>
                 <div class ="stickers">
                     <p>stickers</p>
-                    <label for="filetoupload">Select image to upload:</label> 
- 
+                    <table>
+                        <td>
+                            <img id ="sticker1" src ="sticker1.png" class = "stick">
+                            <button onClick = "stick1();"> set image</button>
+                        </td> 
+                        <td>
+                            <img id ="sticker2" src ="sticker2.jpeg" class = "stick" >
+                            <button onClick = "stick2();"> sticker2</button>
+                        </td> 
+                        <td>
+                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick" ">
+                            <button onClick = "stick3();"> sticker3</button>
+                        </td> 
+                        <td>
+                            <img id ="sticker4" src ="sticker4.png" class = "stick" >
+                            <button onClick = "stick4();"> sticker4</button>
+                        </td> 
+                    </table>
+                   
+
                 </div>
+                 <label for="filetoupload">Select image to upload:</label> 
                 <input type="file" onchange = "mydrw(this);">
                 <img id ="preview" class = "preview">
                 <button onClick = "setImage();"> set image</button>
