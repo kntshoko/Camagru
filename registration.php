@@ -29,7 +29,6 @@
                     "MNBVCXZASDFGHJKL"),0,10);
                          $sql = $conn->prepare("INSERT INTO users (`user_name`,`email`,`password`,`token`,`account`,`notification`) 
                     VALUES (?,?,?,?,?,?)"); 
-                    
                     $sql->execute([$username,$email,md5($password),$token,0,1]);
                     $to = $email;
                     $subject = "CAMAGRU email comfermation";

@@ -23,23 +23,26 @@
             }
             else
             {
-                echo "currentpassword  == ".$_POST['currentpassword']."<br>";
-                echo "currentpassword  == ".md5($_POST['currentpassword'])."<br>";
-                echo "password  -----------> ".$_SESSION['login']['password']."<br>";
                 if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
                 {
                     $mg = "check your input";
                 }
                 else
                 {
-                    if ($_POST['cpassword'] == $_POST['npassword'])
+                    $p1 = md5($_POST['cpassword']);
+                    $p2 = md5($_POST['npassword']);
+
+                    if ($p1 == $p2)
                     {
                         $id = $_SESSION['login']['id'];
-                        $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE  `id` = '$id'");
-                        $sql->execute(md5($_GET['conpassword'])); 
-                        print_r($sql);
-                        die();
-                        $_SESSION['login']['password'] = md5($_GET['cpassword']);
+                        $sql = $conn->prepare("UPDATE `users` SET `password` = :password WHERE  `id` = :id");
+                        $sql->bindParam(':password', $p1);
+                        $sql->bindParam(':id', $id);
+                        echo $id;
+                        $sql->execute(); 
+                        echo "yo";
+                        $_SESSION['login']['password'] = $p1;
+                        
                         header('Location: logout.php');
                         exit();
                     }
@@ -52,8 +55,6 @@
             }
         }
     }
-    
-
 ?>
 
 

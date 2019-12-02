@@ -3,7 +3,6 @@
     $mg = "";
     session_start();
 
-   
     if(!$_SESSION['login'])
     {
         header('Location: index.php');
@@ -40,20 +39,18 @@
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                   
+                    // users username update
                     $sql = $conn->prepare("UPDATE users SET `user_name` = ? WHERE `id` = ? ");
-                    
                     $sql->execute([$uname,$id]); 
-                   
+                   //likes username update
                     $sql = $conn->prepare("UPDATE likes SET `user_name` = ? WHERE `user_name` = ?");
-                    $sql->execute([$uname,$_SESSION['login']['user_name']]); 
-                    $sql = $conn->prepare("UPDATE commets SET `user_name` = $uname   WHERE `user_name` = ?");
-                    $sql->execute($_SESSION['login']['user_name']); 
-                    $sq = $conn->prepare("UPDATE gallery SET `user_name` = $uname   WHERE `user_name` = ?");
-                    print_r($sq);
-                    die();
-                    $sql->execute($_SESSION['login']['user_name']); 
-
+                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
+                    //comments username update
+                    $sql = $conn->prepare("UPDATE comments SET `user_name` = ? WHERE `user_name` = ?");
+                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
+                    //gallery username update
+                    $sq = $conn->prepare("UPDATE gallery SET `user_name` = ? WHERE `user_name` = ?");  
+                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
                     $_SESSION['login']['user_name'] = $uname;
                 }
                 else
