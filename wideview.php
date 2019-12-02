@@ -22,7 +22,7 @@
             try
             {
                 $sql = $conn->prepare("INSERT INTO comments ( `user_name`, `imageid`,`comment`) VALUES (?,?,?)");
-                $sql->execute([$username,$imgid,$comment]);
+                $sql->execute([$username,$imgid,htmlspecialchars($comment)]);
             }
             catch(PDOException $e)
             {

@@ -51,10 +51,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>width : 100%;
-    height: 80%;
-    border : 1px solid #f1f1f1;
-    border-radius : 10%;
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -65,12 +62,12 @@
         <div class = "navbar">
             <a href="index.php">Go To Welcome</a>
         </div>      
-    <h1 align = center>
+    <h1>
             CAMAGRU
     </h1>
     <div class = "main">
         
-            <form action="registration.php" method ="post" class = "registra">
+            <form action="registration.php" method ="post" class = "registration">
             <h2>REGISTRATION FORM</h2>
             <div class="imagecontainer">
                      <img src="image.png" alt = "limg" class ="loginimage">
