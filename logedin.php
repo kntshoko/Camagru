@@ -53,6 +53,23 @@ if(!$_SESSION['login'])
                                             ?>" 
                                         alt="" class ="postimage" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';">
                                     </div>
+                                    <p>
+                                    <?php
+                                    try {
+                                        $count = $conn->prepare("SELECT * FROM `likes` WHERE `imageid` =?");
+                                        $count->execute([$row['imageid']]);
+                                        $l = $count->fetchall();
+                                        $count = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` =?");
+                                        $count->execute($row['imageid']);
+                                        $c = $count->fetchall();
+                                        //var_dump($count);
+                                        echo count($l)." likes ".count($c)."  comments";
+                                    } catch (PDOExceptipn $e) {
+                                        echo "failed == ".$e->getMessage();
+                                    }
+                                        
+                                    ?>
+                                    </p>
                                         <button type="button" value = "<?php echo $row['imageid']?>" id ="mylikes<?php echo $row['imageid']?>" onclick="mylikes('<?php echo 'mylikes'.$row['imageid']?>');"> likes</button>
                                         <button type="button" onclick="window.location.href = 'wideview.php?imgid=<?php echo $row['imageid']?>&imgname=<?php echo $row['imagename']?>';"> comments</button>
                                     <?php

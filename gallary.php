@@ -37,7 +37,7 @@ if(!$_SESSION['login'])
         <h1 style = "text-align : center">
                 CAMAGRU
             </h1> 
-            <p id = "demo"></p>     
+    
         <div class = "main">     
             
             <div class = "gallery">
@@ -53,23 +53,30 @@ if(!$_SESSION['login'])
                     <table>
                         <td>
                             <img id ="sticker1" src ="sticker1.png" class = "stick">
-                            <button onClick = "stick1();"> set image</button>
+                            <button onClick = "stick('sticher1');"> set image</button>
                         </td> 
                         <td>
                             <img id ="sticker2" src ="sticker2.jpeg" class = "stick" >
-                            <button onClick = "stick2();"> sticker2</button>
+                            <button onClick = "stick('sticker2');"> sticker2</button>
                         </td> 
                         <td>
-                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick" ">
-                            <button onClick = "stick3();"> sticker3</button>
+                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick">
+                            <button onClick = "stick('sticker3');"> sticker3</button>
                         </td> 
                         <td>
-                            <img id ="sticker4" src ="sticker4.png" class = "stick" >
-                            <button onClick = "stick4();"> sticker4</button>
+                            <img id ="sticker5" src ="sticker5.jpeg" class = "stick" >
+                            <button onClick = "stick('sticker5');"> sticker4</button>
+                        </td> 
+                        <td>
+                            <img id ="sticker6" src ="sticker6.jpeg" class = "stick" >
+                            <button onClick = "stick('sticker6');"> sticker3</button>
+                        </td> 
+                        <td>
+                            <img id ="sticker8" src ="sticker8.jpeg" class = "stick" >
+                            <button onClick = "stick('sticker8');"> sticker4</button>
                         </td> 
                     </table>
                    
-
                 </div>
                  <label for="filetoupload">Select image to upload:</label> 
                 <input type="file" onchange = "mydrw(this);">

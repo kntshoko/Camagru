@@ -4,7 +4,6 @@ require_once ("setup.php");
 require_once("config.php"); 
 $imageid = $_POST['value'];
 $username = $_SESSION['login']['user_name'];
-echo $imageid;
 try{
         $sql = $conn->prepare("SELECT * FROM likes WHERE `user_name`= ? AND `imageid` = ?");
         $sql->execute([$username, $imageid]);
@@ -22,7 +21,5 @@ catch(PDOException $e)
 {
     echo "<br> failer ==" . $e->getMessage();
 }
-   
-    print_r($sql);
-
+header('location: gallary');
 ?>
