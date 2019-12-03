@@ -32,7 +32,7 @@
                     $sql->execute([$username,$email,md5($password),$token,0,1]);
                     $to = $email;
                     $subject = "CAMAGRU email comfermation";
-                    $message = "click on the link below<br><a href ='http://localhost:8080/Camagru/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
+                    $message = "click on the link below<br><a href ='http://localhost:8081/Camagru/confirm.php?email=$email&username=$username&token=$token'>confrm account</a>";
                     $headers = 'From: nonreply'."\r\n";
                     $headers .= "MIME-Version: 1.0"."\r\n";
                     $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
