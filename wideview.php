@@ -23,6 +23,23 @@
             {
                 $sql = $conn->prepare("INSERT INTO comments ( `user_name`, `imageid`,`comment`) VALUES (?,?,?)");
                 $sql->execute([$username,$imgid,htmlspecialchars($comment)]);
+                $sql =$conn->prepare("SELECT * FROM gallery WHERE `imageid` = $imgid LIMIT = 1");
+                $sql->execute();
+                $row = $sql->fetch();
+                $sql =$conn->prepare("SELECT * FROM users WHERE `user_name` = ? LIMIT = 1");
+                $sql->execute($row['user_name']);
+                $result = $sql->fetch();
+                if($result['notification'] == 1)
+                {
+                    $to = $result['email'];
+                    $subject = "CAMAGRU comment on image <br><br><h1>$username</h1><p>$comment</p><br><br>";
+                    $message = "click on the link below<br><a href ='http://localhost:8080/Camagru/'>login to Camagru</a>";
+                    $headers = 'From: nonreply'."\r\n";
+                    $headers .= "MIME-Version: 1.0"."\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+                    mail($to,$subject,$message,$headers);
+                }
+
             }
             catch(PDOException $e)
             {
