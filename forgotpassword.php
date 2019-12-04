@@ -1,12 +1,5 @@
 <?php
-session_start();
-if(!$_SESSION['login'])
-{
-    header('Location: index.php');
-    exit();
-}
-else
-{
+    
     if (isset($_POST['submit']))
     {
         require_once("config.php"); 
@@ -17,19 +10,20 @@ else
         }
         else
         {
-            $sql = $conn->prepare("SELECT id FROM users WHERE `email` = '$email' LIMIT 1");
-            $sql->execute();
+            
+            $sql = $conn->prepare("SELECT * FROM `users` WHERE `email` = ?");
+            $sql->execute([$email]);
             $row = $sql->fetch();
-            if (empty($row) != true)
+
+            if (!empty($row))
             {
                 $token = substr(str_shuffle($firstname.$lastname."123456789".
                 "MNBVCXZASDFGHJKL"),0,10);
-                $sql = $conn->prepare("INSERT INTO users (`token`) 
-                VALUES (?)"); 
+                $sql = $conn->prepare("UPDATE  `users` SET `token` = ?"); 
                 $sql->execute([$token]);
                 $to = $email;
                 $subject = "CAMAGRU Password recreation";
-                $message = "click on the link below<br><a href ='http://localhost:8081/untitled%20folder/sa4/confirmpassword.php?email=$email&token=$token'>confrm account</a>";
+                $message = "click on the link below<br><a href ='http://localhost:8081/Camagru/confirmpassword.php?email=$email&token=$token'>confrm account</a>";
                 $headers = 'From: nonreply'."\r\n";
                 $headers .= "MIME-Version: 1.0"."\r\n";
                 $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
@@ -44,8 +38,6 @@ else
         }   
         $conn = NULL;
     }
-}
-
 ?>
 
 

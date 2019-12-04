@@ -59,13 +59,13 @@
                      ?>
                 </h2>
                  <div class = "con">
-                    <label for="newpassword"> New Password : </label> 
+                    <label for="npassword"> New Password : </label> 
                     <br>
-                    <input type="password" name = "newpassword" />
+                    <input type="password" name = "npassword" />
                     <br><br>
-                    <label for="conpassword">Confirm New Password :  </label>   
+                    <label for="cpassword">Confirm New Password :  </label>   
                     <br>
-                    <input type="password" name = "conpassword" />
+                    <input type="password" name = "cpassword" />
                     <br><br>
                     <br>
                     <input type="submit" name = "submit" value = "register"/>

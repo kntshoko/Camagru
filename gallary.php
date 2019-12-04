@@ -23,7 +23,7 @@ if(!$_SESSION['login'])
         <div class = "navbar">
             <a href="logedin.php">Go To Welcome</a>
 
-            <a href="#">My Pictures</a>
+            <a href="mypictures.php">My Pictures</a>
             <div class="dropdown">
             <button class="setbtn">SETTINGS</button>
             <div class="dropcontainer">

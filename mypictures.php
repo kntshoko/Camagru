@@ -56,9 +56,9 @@ if (isset($_POST['delete']))
                      require_once ("setup.php");
                      require_once("config.php"); 
                     try{
-                            $sql = $conn->prepare("SELECT * FROM gallery") ;
-                            $sql->execute(); 
-                            $result = $sql->fetchall(); 
+                            $sql = $conn->prepare("SELECT * FROM gallery WHERE `user_name` = ?") ;
+                            $sql->execute([$_SESSION['login']['user_name']]); 
+                            $result = $sql->fetchall();
                             echo "<table>";
 
                             foreach ($result as $row) {
