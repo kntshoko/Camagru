@@ -47,28 +47,29 @@ if(!$_SESSION['login'])
                     <video id="video"  class = "video"></video>
                     <a href="#" id = "capture" class="capturbutton">Take photo</a>
                     <canvas id = "canvas"  class = "canvas"></canvas>
+                    <canvas id = "canvas2"  class = "canvas2" ></canvas>
                     <button onclick = "c_reset();">clear</button>
                 </div>
                 <div class ="stickers">
                     <p>stickers</p>
                     <table>
                         <td>
-                            <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1');">
+                            <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','34','56');">
                         </td> 
                         <td>
-                            <img id ="sticker2" src ="sticker2.jpeg" class = "stick" onClick = "stick('sticker2');">
+                            <img id ="sticker2" src ="sticker2.jpeg" class = "stick" onClick = "stick('sticker2','344','456');">
                         </td> 
                         <td>
-                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick"onClick = "stick('sticker3');">
+                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick"onClick = "stick('sticker3','345','166');">
                         </td> 
                         <td>
-                            <img id ="sticker5" src ="sticker5.jpeg" class = "stick" onClick = "stick('sticker5');" >
+                            <img id ="sticker5" src ="sticker5.jpeg" class = "stick" onClick = "stick('sticker5','94','36');" >
                         </td> 
                         <td>
-                            <img id ="sticker6" src ="sticker6.jpeg" class = "stick" onClick = "stick('sticker6');">
+                            <img id ="sticker6" src ="sticker6.jpeg" class = "stick" onClick = "stick('sticker6','84','367');">
                         </td> 
                         <td>
-                            <img id ="sticker8" src ="sticker8.jpeg" class = "stick" onClick = "stick('sticker8');">
+                            <img id ="sticker8" src ="sticker8.jpeg" class = "stick" onClick = "stick('sticker8','77','9');">
                         </td> 
                     </table>
                    

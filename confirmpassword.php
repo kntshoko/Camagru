@@ -2,6 +2,8 @@
     $mg = "";
     $email = $_GET['email'];
     $token = $_GET['token'];
+    echo $email." ".$token;
+    echo "\n POST".$_POST['email']." ".$_POST['token'];
     if (isset($_POST['submit']) && ($email != null && $token != null))
     {
         if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
@@ -61,7 +63,7 @@
     </h1>
     <div class = "cl">
         
-            <form action="confirmpassword.php" method ="post">
+            <form action="confirmpassword.php?email=<?php echo $email?>&token=<?php echo $token?>" method ="post">
             <h2>CONFIRM PASSWORD FORM</h2>
             <div class="imgcon">
                      <img src="image.png" alt = "limg" class ="limg">

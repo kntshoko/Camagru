@@ -1,6 +1,9 @@
 
 var canvas = document.getElementById('canvas');
+var canvas2 = document.getElementById('canvas2');
 var context = canvas.getContext('2d');
+var context2 = canvas2.getContext('2d');
+var stickers = [];
 function myfunction()
 {
     var context = canvas.getContext('2d');
@@ -31,13 +34,16 @@ function myfunction()
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
         context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
+        canvas2.width = video.clientWidth;
+        canvas2.height = video.clientWidth;
+        context2.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
     });
 }
 
 function upload()
 {
-    var canvas = document.getElementById("canvas");
-    var dataURL = canvas.toDataURL("image/png");
+    var canvas = document.getElementById("canvas2");
+    var dataURL = canvas2.toDataURL("image/png");
     var xhr = new XMLHttpRequest();
 
     xhr.onload = function()
@@ -47,7 +53,7 @@ function upload()
 
     xhr.open('POST', 't.php', true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("image="+dataURL);
+    xhr.send("image="+dataURL,"stickers="+stickers);
 }
 
 function mydrw(input)
@@ -68,11 +74,12 @@ function setImage()
     context.drawImage(image,0,0);
 }
 
-function stick(t)
+function stick(t,x,y)
 {
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
-    context.drawImage(image,Math.floor(Math.random() * 300),Math.floor(Math.random() * 200),20,20);
+    context.drawImage(image,x,y,20,20);
+    stickers[t] = t;
 }
 function c_reset()
 {
