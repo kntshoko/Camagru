@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                        $mg = "Input are incorrect";
+                        $mg = "Your inputs are incorrect";
                     }
                 }
             }

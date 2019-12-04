@@ -2,7 +2,6 @@
     $email = $_GET['email'];
     $token = $_GET['token'];
     $username = $_GET['username'];
-    echo $username;
     require_once("config.php");
     $sql = $conn->prepare("SELECT * FROM `users` WHERE `email` = '$email' AND `token` = '$token' limit 1");
     $sql->execute();

@@ -1,32 +1,35 @@
 <?php
     $mg = "";
-    if (isset($_POST['submit']))
+    $email = $_GET['email'];
+    $token = $_GET['token'];
+    if (isset($_POST['submit']) && ($email != null && $token != null))
     {
         if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
         {
-            $mg = "check your input";
+            $mg = "check your inputs";
         }
         else
         {
             if ( $_POST['cpassword'] == $_POST['npassword'] )
             {
-                $email = $_GET['email'];
-                $token = $_GET['token'];
+                
                 require_once("config.php");
-                // $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
-                // $sql->execute([md5($_POST['cpassword'])]); 
-                // $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
-                // $sql->execute([""]); 
+                $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
+                $sql->execute([md5($_POST['cpassword'])]); 
+                $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
+                $sql->execute([""]); 
 
 
-                $sql = $conn->prepare("UPDATE `users` SET `password` = :password WHERE  `token` = :token");
-                $sql->bindParam(':password', md5($_POST['cpassword']));
-                $sql->bindParam(':token', $token );
-                $sql->execute(); 
-                $sql = $conn->prepare("UPDATE `users` SET `token` = :token WHERE  `token` = :token");
-                $sql->bindParam(':token', $token );
-                $sql->bindParam(':token', $token );
-                $sql->execute(); 
+                // $sql = $conn->prepare("UPDATE `users` SET `password` = :password WHERE  `token` = :token");
+                // $sql->bindParam(':password', md5($_POST['cpassword']));
+                // $sql->bindParam(':token', $token );
+                // var_dump($sql);
+                // die();
+                // $sql->execute(); 
+                // $sql = $conn->prepare("UPDATE `users` SET `token` = :token WHERE  `token` = :token");
+                // $sql->bindParam(':token', NULL );
+                // $sql->bindParam(':token', $token );
+                // $sql->execute(); 
 
                 $conn = NULL;
                 header('Location: login.php');
