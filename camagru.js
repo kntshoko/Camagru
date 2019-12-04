@@ -32,9 +32,8 @@ function myfunction()
         canvas.height = video.clientWidth;
         context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
     });
-
- 
 }
+
 function upload()
 {
     var canvas = document.getElementById("canvas");
@@ -50,6 +49,7 @@ function upload()
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("image="+dataURL);
 }
+
 function mydrw(input)
 {
     var reader = new FileReader();
@@ -60,12 +60,14 @@ function mydrw(input)
     }
     reader.readAsDataURL(input.files[0]);
 }
+
 function setImage()
 {
     var image = document.getElementById("preview");
     
     context.drawImage(image,0,0);
 }
+
 function stick(t)
 {
     var context = canvas.getContext('2d');
