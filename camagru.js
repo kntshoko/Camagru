@@ -72,7 +72,6 @@ function stick(t)
 {
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
-    alert(t);
     context.drawImage(image,Math.floor(Math.random() * 300),Math.floor(Math.random() * 200),20,20);
 }
 
