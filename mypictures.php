@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-//if(!$_SESSION['login'])
-//{
-  //      header('Location: logedin.php');
-    //    exit();
-//}
+if(!$_SESSION['login'])
+{
+    header('Location: logedin.php');
+    exit();
+}
 require_once ("setup.php");
 require_once("config.php");  
 if (isset($_POST['delete']))
