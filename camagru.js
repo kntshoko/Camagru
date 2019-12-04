@@ -74,6 +74,11 @@ function stick(t)
     var image = document.getElementById(t);
     context.drawImage(image,Math.floor(Math.random() * 300),Math.floor(Math.random() * 200),20,20);
 }
+function c_reset()
+{
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
 
 function mylikes(id) {
     var xhttp = new XMLHttpRequest();

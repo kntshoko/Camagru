@@ -47,6 +47,7 @@ if(!$_SESSION['login'])
                     <video id="video"  class = "video"></video>
                     <a href="#" id = "capture" class="capturbutton">Take photo</a>
                     <canvas id = "canvas"  class = "canvas"></canvas>
+                    <button onclick = "c_reset();">clear</button>
                 </div>
                 <div class ="stickers">
                     <p>stickers</p>
