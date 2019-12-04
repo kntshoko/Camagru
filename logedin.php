@@ -26,7 +26,7 @@ if(!$_SESSION['login'])
         </div> 
         <a href="logout.php">LOGOUT</a>
     </div>  
-               <h1 align = center>
+               <h1 style= "text-align :center;">
                 CAMAGRU
             </h1>       
         <div class = "main">
@@ -45,7 +45,7 @@ if(!$_SESSION['login'])
                                  echo "<tr>";
                                 echo "<td>";
                                     ?>
-                                    <p><?php echo $row['user_name'];?></p>
+                                    <p><b><?php echo $row['user_name'];?></b></p>
                                     <div class ="imagecontainer">
                                           <img src="
                                             <?php

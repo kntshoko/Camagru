@@ -38,9 +38,7 @@
                         $sql = $conn->prepare("UPDATE `users` SET `password` = :password WHERE  `id` = :id");
                         $sql->bindParam(':password', $p1);
                         $sql->bindParam(':id', $id);
-                        echo $id;
                         $sql->execute(); 
-                        echo "yo";
                         $_SESSION['login']['password'] = $p1;
                         
                         header('Location: logout.php');

@@ -2,24 +2,35 @@
     $mg = "";
     if (isset($_POST['submit']))
     {
-        if ( $_POST['conpassword'] == null || $_POST['newpassword'] == null)
+        if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
         {
             $mg = "check your input";
         }
         else
         {
-            if ( $_POST['conpassword'] == $_POST['newpassword'] )
+            if ( $_POST['cpassword'] == $_POST['npassword'] )
             {
                 $email = $_GET['email'];
-            $token = $_GET['token'];
-            require_once("config.php");
-            $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
-            $sql->execute([md5($_POST['conpassword'])]); 
-            $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
-            $sql->execute([""]); 
-            $conn = NULL;
-            header('Location: login.php');
-            exit();
+                $token = $_GET['token'];
+                require_once("config.php");
+                // $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
+                // $sql->execute([md5($_POST['cpassword'])]); 
+                // $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
+                // $sql->execute([""]); 
+
+
+                $sql = $conn->prepare("UPDATE `users` SET `password` = :password WHERE  `token` = :token");
+                $sql->bindParam(':password', md5($_POST['cpassword']));
+                $sql->bindParam(':token', $token );
+                $sql->execute(); 
+                $sql = $conn->prepare("UPDATE `users` SET `token` = :token WHERE  `token` = :token");
+                $sql->bindParam(':token', $token );
+                $sql->bindParam(':token', $token );
+                $sql->execute(); 
+
+                $conn = NULL;
+                header('Location: login.php');
+                exit();
             }
             else
             {
