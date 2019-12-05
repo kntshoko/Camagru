@@ -3,7 +3,7 @@ var canvas = document.getElementById('canvas');
 var canvas2 = document.getElementById('canvas2');
 var context = canvas.getContext('2d');
 var context2 = canvas2.getContext('2d');
-var stickers = [];
+var stickers  = " ";
 function myfunction()
 {
     var context = canvas.getContext('2d');
@@ -51,9 +51,9 @@ function upload()
         console.log(xhr.status, xhr.responseText);
     };
 
-    xhr.open('POST', 't.php', true);
+    xhr.open("POST", "t.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("image="+dataURL,"stickers="+stickers);
+    xhr.send("image="+dataURL+"*"+stickers);
 }
 
 function mydrw(input)
@@ -79,7 +79,7 @@ function stick(t,x,y)
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
     context.drawImage(image,x,y,20,20);
-    stickers[t] = t;
+    stickers = stickers+" "+t;
 }
 function c_reset()
 {

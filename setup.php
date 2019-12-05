@@ -67,6 +67,7 @@ $dbName = "camagru";
             ( `imageid` INT(11) NOT NULL AUTO_INCREMENT ,
             `user_name` VARCHAR(20) NOT NULL ,
             `imagename` VARCHAR(100) NOT NULL ,
+            `edited` int (1) UNSIGNED DEFAULT 0,
             PRIMARY KEY (`imageid`))") ;
     $sql->execute(); 
     }catch(PDOExceptipn $e){

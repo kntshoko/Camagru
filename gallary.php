@@ -53,9 +53,9 @@ if(!$_SESSION['login'])
                 <div class ="stickers">
                     <p>stickers</p>
                     <table>
-                        <td>
+                        <!-- <td>
                             <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','34','56');">
-                        </td> 
+                        </td>  -->
                         <td>
                             <img id ="sticker2" src ="sticker2.jpeg" class = "stick" onClick = "stick('sticker2','344','456');">
                         </td> 
