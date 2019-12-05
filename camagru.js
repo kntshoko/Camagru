@@ -1,13 +1,14 @@
 
-var canvas = document.getElementById('canvas');
-var canvas2 = document.getElementById('canvas2');
-var context = canvas.getContext('2d');
-var context2 = canvas2.getContext('2d');
+// var context = canvas.getContext('2d');
+// var canvas2 = document.getElementById('canvas2');
+
+// var context2 = canvas2.getContext('2d');
 var stickers  = " ";
 function myfunction()
 {
-    var context = canvas.getContext('2d');
-
+    
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
     navigator.getMedia =    navigator.getUserMedia ||
                             navigator.webkitGetUserMedia||
                             navigator.mozGetUserMedia||
@@ -31,6 +32,8 @@ function myfunction()
 
     document.getElementById('capture').addEventListener('click',function()
     {
+        var canvas2 = document.getElementById('canvas2');
+        var context2 = canvas2.getContext('2d');
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
         context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
@@ -42,7 +45,7 @@ function myfunction()
 
 function upload()
 {
-    var canvas = document.getElementById("canvas2");
+    var canvas2 = document.getElementById("canvas2");
     var dataURL = canvas2.toDataURL("image/png");
     var xhr = new XMLHttpRequest();
 
@@ -69,16 +72,21 @@ function mydrw(input)
 
 function setImage()
 {
+    var canvas2 = document.getElementById('canvas2');
+    var context2 = canvas2.getContext('2d');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
     var image = document.getElementById("preview");
     
     context.drawImage(image,0,0);
+    context2.drawImage(image,0,0);
 }
 
 function stick(t,x,y)
 {
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
-    context.drawImage(image,x,y,20,20);
+    context.drawImage(image,x,y,200,200);
     stickers = stickers+" "+t;
 }
 function c_reset()

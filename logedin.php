@@ -36,7 +36,7 @@ if(!$_SESSION['login'])
                     require_once("config.php");   
                         
                     try{
-                            $sql = $conn->prepare("SELECT * FROM gallery") ;
+                            $sql = $conn->prepare("SELECT * FROM gallery ORDER BY `imageid` DESC") ;
                             $sql->execute(); 
                             $result = $sql->fetchall(); 
                             echo "<table>";

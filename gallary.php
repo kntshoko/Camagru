@@ -57,9 +57,9 @@ if(!$_SESSION['login'])
                             <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','34','56');">
                         </td>  -->
                         <td>
-                            <img id ="sticker2" src ="sticker2.jpeg" class = "stick" onClick = "stick('sticker2','344','456');">
-                        </td> 
-                        <td>
+                            <img id ="sticker4" src ="sticker4.png" class = "stick" onClick = "stick('sticker4','344','456');">
+                        </td>  
+                        <!-- <td>
                             <img id ="sticker3" src ="sticker3.jpeg" class = "stick"onClick = "stick('sticker3','345','166');">
                         </td> 
                         <td>
@@ -70,7 +70,7 @@ if(!$_SESSION['login'])
                         </td> 
                         <td>
                             <img id ="sticker8" src ="sticker8.jpeg" class = "stick" onClick = "stick('sticker8','77','9');">
-                        </td> 
+                        </td>   -->
                     </table>
                    
                 </div>

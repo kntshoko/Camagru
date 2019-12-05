@@ -4,44 +4,42 @@
     require_once ("setup.php");
     require_once("config.php"); 
 
-    $img = explode("*",$_POST['image']);
 
+
+    $i = explode("*",$_POST['image']);
+    $img = $i;
+    
+   
     $name = $_SESSION['login']['user_name'];
 
-    $stickers = str_replace("sticker"," ",$img[1]);
+    $i = $i[1];
+    $stickers = str_replace("sticker"," ",$i);
     $stickers = trim($stickers);
     $stickers = preg_replace('/\s\s+/',' ', $stickers);
     $stickers= preg_replace("/\b(\w+)\s+\\1\b/i", "$1", $stickers);
     $stickers = explode(" ",$stickers);
     $stickers = array_unique($stickers);
     $stickers = join(" ",$stickers);
-    $img = str_replace('data:image/png;base64,', '', $img[0]);
-    $img = str_replace(' ', '+', $img[0]);
+
+    $img = str_replace('data:image/png;base64,', '', $img);
+    $img = str_replace(' ', '+', $img);
     $data = base64_decode($img[0]);
     $upload = imagecreatefromstring($data);
     $file = "camagru".uniqid().".png";
     $filedest = "uploads/".$file;
-    imagepng($upload, $filedest);
-    if ($stickers != null) 
-    {   
-        $dest = imagecreatefrompng($filedest);
+    $success = imagepng($upload, "uploads/".$file);
 
-        if (strstr($stickers, "1")!= null) {
-            $b = imagecreatefrompng('sticker1.png');
-            imagecopy($b,$d, 100,0,100,100, WIDTH, HEIGHT);
-        }
-        if (strstr($stickers, "2")!= null) {
-            list($width,$height) = getimagesize('sticker2.png');
-            $b = imagecreatefrompng('sticker2.png');
-            imagecopy($b,$d, 100,0,100,100, $width, $height);
-            header('Content-Type: image/png');
-            imagepng($dest, $filedest);
-        }
+
+
+        $dest = imagecreatefrompng("uploads/".$file);
         
-    }
-    else
-    {
-
+        if (strstr($stickers, "4")!= null) {
+            list($width,$height) = getimagesize('sticker4.png');
+            $b = imagecreatefrompng('sticker4.png');
+            imagecopy($dest, $b,100,100,100,100, $width, $height);
+            header('Content-Type: image/png');
+            imagepng($dest, "uploads/".$file);
+        }    
     
         try
         {
@@ -52,7 +50,7 @@
         {
             echo $e->getMessage();
         }
-    }
+    
     $conn = NULL;
 
 ?>
