@@ -78,15 +78,15 @@ function setImage()
     var context = canvas.getContext('2d');
     var image = document.getElementById("preview");
     
-    context.drawImage(image,0,0);
-    context2.drawImage(image,0,0);
+    context.drawImage(image,50,50,6000.6000);
+    context2.drawImage(image,0,0,6000,6000);
 }
 
 function stick(t,x,y)
 {
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
-    context.drawImage(image,x,y,200,200);
+    context.drawImage(image,x,y);
     stickers = stickers+" "+t;
 }
 function c_reset()

@@ -16,6 +16,14 @@
             $mg = "check your inputs";
 
         }
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            $mg = "Invalid email format";
+        }
+        else if (ctype_upper($password))
+        {
+            $mg = "Your password must consists of at least one upper-case letter";
+        }
         else
         {
            

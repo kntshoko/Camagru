@@ -30,7 +30,9 @@ if(!$_SESSION['login'])
                 CAMAGRU
             </h1>       
         <div class = "main">
-
+            <form action="login.php" method="post">
+                <input type="submit" value="previous">
+            </form>
         <?php                         
                     require_once ("setup.php");
                     require_once("config.php");   
@@ -85,7 +87,9 @@ if(!$_SESSION['login'])
                     echo $e->getMessage();
                     }  
                    
-                ?>
+                ?><form action="login.php" method="post">
+                <input type="submit" value="next">
+            </form>
     </div>
 </body>
 </html>
