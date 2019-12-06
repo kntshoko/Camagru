@@ -53,8 +53,8 @@ if (isset($_POST['delete']))
 
         <?php                         
                      
-                     require_once ("setup.php");
-                     require_once("config.php"); 
+                     require_once ("config/setup.php");
+                    require_once("config/database.php");
                     try{
                             $sql = $conn->prepare("SELECT * FROM gallery WHERE `user_name` = ?") ;
                             $sql->execute([$_SESSION['login']['user_name']]); 

@@ -5,8 +5,8 @@
     {
         if (isset($_POST['logedin']))
         {
-            require_once ("setup.php");
-            require_once("config.php"); 
+            require_once ("config/setup.php");
+            require_once("config/database.php");
             $login = $_POST['login'];
             $password = $_POST['password'];
             if($password == NULL || $login == NULL)

@@ -3,7 +3,8 @@
     $token = $_GET['token'];
     $id = $_GET['id'];
 
-    require_once("config.php");
+    require_once ("config/setup.php");
+    require_once("config/database.php");
     $sql = $conn->prepare("SELECT * FROM `users` WHERE `id` = '$id' AND `token` = '$token' limit 1");
     $sql->execute();
     $row = $sql->fetch();

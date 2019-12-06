@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once ("setup.php");
-require_once("config.php"); 
+require_once ("config/setup.php");
+require_once("config/database.php");
 $imageid = $_POST['value'];
 $username = $_SESSION['login']['user_name'];
 try{

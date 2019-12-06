@@ -34,8 +34,8 @@ if(!$_SESSION['login'])
                 <input type="submit" value="previous">
             </form>
         <?php                         
-                    require_once ("setup.php");
-                    require_once("config.php");   
+                    require_once ("config/setup.php");
+                    require_once("config/database.php");
                         
                     try{
                             $sql = $conn->prepare("SELECT * FROM gallery ORDER BY `imageid` DESC") ;
@@ -64,7 +64,6 @@ if(!$_SESSION['login'])
                                         $count = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` =?");
                                         $count->execute($row['imageid']);
                                         $c = $count->fetchall();
-                                        //var_dump($count);
                                         echo count($l)." likes ".count($c)."  comments";
                                     } catch (PDOExceptipn $e) {
                                         echo "failed == ".$e->getMessage();

@@ -12,8 +12,8 @@
     {
         if (isset($_POST['submit']))
         {
-            require_once ("setup.php");
-            require_once("config.php");
+            require_once ("config/setup.php");
+            require_once("config/database.php");
             
 
             if (!(md5($_POST['currentpassword']) == $_SESSION['login']['password']))

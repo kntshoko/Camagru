@@ -13,7 +13,8 @@
         $id =$_SESSION['login']['id'];
         if (isset($_POST['submit']))
         {
-            require_once("config.php"); 
+            require_once ("config/setup.php");
+            require_once("config/database.php");
             
             if($_POST['email'] != null)
             {

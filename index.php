@@ -9,8 +9,8 @@
     }
 
     $page = $_POST['page'];                    
-    require_once ("setup.php");
-    require_once("config.php"); 
+    require_once ("config/setup.php");
+    require_once("config/database.php");
         
     try{
             $sql = $conn->prepare("SELECT * FROM gallery") ;

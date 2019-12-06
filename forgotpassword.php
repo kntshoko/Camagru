@@ -2,7 +2,8 @@
     
     if (isset($_POST['submit']))
     {
-        require_once("config.php"); 
+        require_once ("config/setup.php");
+        require_once("config/database.php");
         $email = $_POST['email']; 
         if ($email == null )
         {

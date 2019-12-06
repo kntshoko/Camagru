@@ -5,8 +5,8 @@
         header('Location: logedin.php');
         exit();
     }
-    require_once ("setup.php");
-    require_once("config.php"); 
+    require_once ("config/setup.php");
+    require_once("config/database.php");
     $username = $_SESSION['login']['user_name'];
 
     $imgname = $_GET['imgname'];

@@ -2,8 +2,7 @@
     $mg = "";
     $email = $_GET['email'];
     $token = $_GET['token'];
-    echo $email." ".$token;
-    echo "\n POST".$_POST['email']." ".$_POST['token'];
+   
     if (isset($_POST['submit']) && ($email != null && $token != null))
     {
         if ( $_POST['cpassword'] == null || $_POST['npassword'] == null)
@@ -15,7 +14,8 @@
             if ( $_POST['cpassword'] == $_POST['npassword'] )
             {
                 
-                require_once("config.php");
+                require_once ("config/setup.php");
+                require_once("config/database.php");
                 $sql = $conn->prepare("UPDATE users SET `password` = ?  WHERE `email` = '$email'  AND token = '$token'");
                 $sql->execute([md5($_POST['cpassword'])]); 
                 $sql = $conn->prepare("UPDATE users SET token = ?  WHERE `email` = '$email'  AND token = '$token'");
