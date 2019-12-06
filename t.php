@@ -40,10 +40,18 @@
             header('Content-Type: image/png');
             imagepng($dest, "uploads/".$file);
         }    
-    
+
         try
         {
-            $sql = $conn->prepare("INSERT INTO `gallery`( `user_name`,`imagename`) VALUES(?,?)"); 
+            if($stickers != null)
+            {
+                $sql = $conn->prepare("INSERT INTO `gallery`( `user_name`,`imagename`,`edited`) VALUES(?,?,1)");
+            }
+            else
+            {
+                $sql = $conn->prepare("INSERT INTO `gallery`( `user_name`,`imagename`) VALUES(?,?)");
+            }
+  
             $sql->execute([$name,$file]);
         }
         catch (PDOException $e)

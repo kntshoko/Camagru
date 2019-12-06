@@ -37,9 +37,50 @@ if(!$_SESSION['login'])
         <h1 style = "text-align : center">
                 CAMAGRU
             </h1> 
-    
+            
+
         <div class = "main">     
             
+        <div class = "thumbnail">
+            <?php                         
+                    require_once ("setup.php");
+                    require_once("config.php");   
+                        
+                    try{
+                            $sql = $conn->prepare("SELECT * FROM gallery WHERE `edited` = 1 AND
+                            `user_name` = ? ORDER BY `imageid` DESC") ;
+                            $sql->execute([$_SESSION['login']['user_name']]); 
+                            $result = $sql->fetchall(); 
+                            echo "<table>";
+                             echo "<tr>";
+                            foreach ($result as $row) {
+                              
+                                echo "<td>";
+                                    ?>
+                                    <div class ="imagecontainer">
+                                          <img src="
+                                            <?php
+                                                echo "uploads/".$row['imagename'];
+                                            ?>" 
+                                        alt="" class ="thumbimage">
+                                    </div>
+                                    <?php
+                                echo "</td>";
+
+                                
+                         }
+                        echo "</tr>";
+                    echo "</table>";
+                    }
+                    catch(PDOExceptipn $e)
+                    {
+                    echo $e->getMessage();
+                    }  
+                   
+                ?>
+            
+            </div>
+
             <div class = "gallery">
                 <button  onclick="myfunction()">enable webcam</button>
                 <button  onclick="upload()" id = "upload" class="upload">upload</button>

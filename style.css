@@ -2,6 +2,7 @@ body
 {
     font-family: Arial, Helvetica, sans-serif;
      background-color: rgb(212, 238, 250); 
+     display: table;
      text-align: center;
 }
 /************ navbr **************/
@@ -69,10 +70,12 @@ body
 
 /* ****************** main **************/
 .main{
-    text-align: center;
+    /* text-align: center; */
     background-color: rgb(159, 213, 238); 
-    margin: auto;
+    margin:auto;
     width: 80%;
+    max-width: 1500px; ;
+    /* top: 20%; */
     border : 1px solid #f1f1f1;
     border-radius : 5%;
 }
@@ -176,8 +179,13 @@ img.postimage{
     border : 1px solid #f1f1f1;
     border-radius : 10%;
 }
- 
 
+img.thumbimage{
+        width : 90%;
+        height: 80%;
+        border : 1px solid #f1f1f1;
+        border-radius : 10%;
+    }
 /****************** images ***************/
 
 /***************** gallery ****************/
@@ -210,13 +218,15 @@ img.postimage{
 .gallery{
     position :inherit;
     width: 99%;
+    top : 1%;
+    right: 2%;
     display : inline-block;
     }
     .gallery button, input[type=file]{
         width : 40%;
         padding : 12px 20px;
         margin : 8px 0;
-        display : inline-block;
+        /* display : inline-block; */
         background-color : cornflowerblue;
         box-sizing : border-box;
         color : #fff;
@@ -252,7 +262,15 @@ img.postimage{
     .stickers .tt tr,td{
         position: inherit;
     }
-
+    .thumbnail{
+        position :inherit;
+        top : 1%;
+        left : 2%;
+        width: 100%;
+        /* display : inline-block; */
+        background-color:  rgb(71, 193, 250); 
+    }
+    
 
 /***************** gallery ****************/
 /****************** table *****************/
