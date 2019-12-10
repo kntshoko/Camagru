@@ -61,9 +61,10 @@
                         
                         //comments username update
                         $sql = $conn->prepare("UPDATE `camagru`.`comments` SET `user_name` = ? WHERE `user_name` = ?");
-                        
+                        $sql->execute([$uname,$n]);
                         //gallery username update
-                        $sq = $conn->prepare("UPDATE `camagru`.`gallery` SET `user_name` = ? WHERE `user_name` = ?");  
+                        $sql = $conn->prepare("UPDATE `camagru`.`gallery` SET `user_name` = ? WHERE `user_name` = ?");
+                        //$arr = array();
                         $sql->execute([$uname,$n]);
                         // users username update
                         $sql = $conn->prepare("UPDATE `camagru`.`users` SET `user_name` = ? WHERE `id` = ? ");
