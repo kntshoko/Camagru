@@ -47,7 +47,7 @@
             { 
                
                 $sql = $conn->prepare("SELECT id FROM `camagru`.`users` WHERE  `user_name` = ? LIMIT 1");
-                $sql->execute($uname);
+                $sql->execute([$uname]);
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
