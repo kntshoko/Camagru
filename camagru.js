@@ -7,8 +7,7 @@ var stickers  = " ";
 function myfunction()
 {
     
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
+
     navigator.getMedia =    navigator.getUserMedia ||
                             navigator.webkitGetUserMedia||
                             navigator.mozGetUserMedia||
@@ -34,6 +33,8 @@ var context = canvas.getContext('2d');
     {
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext('2d');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
         canvas.width = video.clientWidth;
         canvas.height = video.clientWidth;
         context.drawImage(video, 0,0,video.clientWidth,video.clientWidth);
@@ -72,14 +73,19 @@ function mydrw(input)
 
 function setImage()
 {
+
+    var image = document.getElementById("preview");
+    
     var canvas2 = document.getElementById('canvas2');
     var context2 = canvas2.getContext('2d');
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    var image = document.getElementById("preview");
-    
-    context.drawImage(image,50,50,6000.6000);
-    context2.drawImage(image,0,0,6000,6000);
+        canvas.width = video.clientWidth;
+        canvas.height = video.clientWidth;
+        context.drawImage(image, 0,0,video.clientWidth,video.clientWidth);
+        canvas2.width = video.clientWidth;
+        canvas2.height = video.clientWidth;
+        context2.drawImage(image, 0,0,video.clientWidth,video.clientWidth);
 }
 
 function stick(t,x,y)
