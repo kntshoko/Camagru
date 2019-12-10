@@ -90,6 +90,7 @@ function setImage()
 
 function stick(t,x,y)
 {
+    var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var image = document.getElementById(t);
     context.drawImage(image,x,y);

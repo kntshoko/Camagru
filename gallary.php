@@ -94,24 +94,24 @@ if(!$_SESSION['login'])
                 <div class ="stickers">
                     <p>stickers</p>
                     <table>
-                        <!-- <td>
-                            <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','34','56');">
-                        </td>  -->
                         <td>
-                            <img id ="sticker4" src ="sticker4.png" class = "stick" onClick = "stick('sticker4','344','456');">
+                            <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','1','1');">
+                        </td> 
+                        <td>
+                            <img id ="sticker2" src ="sticker2.png" class = "stick" onClick = "stick('sticker2','10','10');">
                         </td>  
-                        <!-- <td>
-                            <img id ="sticker3" src ="sticker3.jpeg" class = "stick"onClick = "stick('sticker3','345','166');">
+                        <td>
+                            <img id ="sticker3" src ="sticker3.png" class = "stick"onClick = "stick('sticker3','20','20');">
                         </td> 
                         <td>
-                            <img id ="sticker5" src ="sticker5.jpeg" class = "stick" onClick = "stick('sticker5','94','36');" >
+                            <img id ="sticker4" src ="sticker4.png" class = "stick" onClick = "stick('sticker4','30','30');" >
                         </td> 
                         <td>
-                            <img id ="sticker6" src ="sticker6.jpeg" class = "stick" onClick = "stick('sticker6','84','367');">
+                            <img id ="sticker5" src ="sticker5.png" class = "stick" onClick = "stick('sticker5','40','40');">
                         </td> 
                         <td>
-                            <img id ="sticker8" src ="sticker8.jpeg" class = "stick" onClick = "stick('sticker8','77','9');">
-                        </td>   -->
+                            <img id ="sticker6" src ="sticker6.png" class = "stick" onClick = "stick('sticker6','50','50');">
+                        </td>  
                     </table>
                    
                 </div>
