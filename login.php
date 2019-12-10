@@ -1,7 +1,7 @@
 <?php
     $mg = "";
     session_start();
-    if(!$_SESSION['login'])
+    if(!isset($_SESSION['login']))
     {
         if (isset($_POST['logedin']))
         {

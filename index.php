@@ -1,14 +1,14 @@
 <?php
 
- session_start();
-
-    if ($_SESSION['login'])
+    session_start();
+    $page;
+    if (isset($_SESSION['login']))
     {
         header('location: logedin.php');
        exit();
     }
-
-    $page = $_POST['page'];                    
+    if(isset($_POST['page']))
+        $page = $_POST['page'];                    
     require_once ("config/setup.php");
     require_once("config/database.php");
         
@@ -38,17 +38,16 @@
             <a href="login.php">Login</a>
             <a href="registration.php">Register Account</a>
         </div>      
-            <h1 align = center>
+            <h1 >
                 CAMAGRU
             </h1>   
         <div class = "main">
-        <form action="index.php?page=<?php echo $page?>" method="post">
+        <form action="index.php?page=<?php if(isset($page)){echo $page;}else{echo 0;}?>" method="post">
                 <input type="submit" name = "previous" value="previous">
             </form>
             <div class = "imgs">
             <?php     
-            $page = $_POST['page']; 
-                    if (!isset($page))
+                    if (!isset($_POST['page']))
                     {
                         $page = 0;
                     }   
@@ -58,13 +57,13 @@
                     }
                     if (isset($_POST['previous'])) {
                         $page -= 4;
-                        if($page < 0) {
+                        if(isset($page) < 0) {
                             $page = 0;
                         }
                     }
                     echo "<table>";
                     $i = 0; 
-                            while($result[$page] && $page > -1 && $i < 5) {
+                            while($result[$page] && isset($page) > -1 && $i < 5) {
                                 echo "<tr>";
                                 echo "<td>";
                                     ?>

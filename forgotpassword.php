@@ -68,7 +68,7 @@
                  </div>   
                  <h2> 
                     <?php 
-                        if($mg != "")
+                        if(isset($mg))
                      echo $mg . "<br>";
                      ?>
                 </h2>
