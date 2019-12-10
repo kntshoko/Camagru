@@ -95,9 +95,6 @@ if(!$_SESSION['login'])
                     <p>stickers</p>
                     <table>
                         <td>
-                            <img id ="sticker1" src ="sticker1.png" class = "stick" onClick = "stick('sticher1','1','1');">
-                        </td> 
-                        <td>
                             <img id ="sticker2" src ="sticker2.png" class = "stick" onClick = "stick('sticker2','10','10');">
                         </td>  
                         <td>

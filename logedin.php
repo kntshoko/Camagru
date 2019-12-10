@@ -61,10 +61,7 @@ if(!$_SESSION['login'])
                                         $count = $conn->prepare("SELECT * FROM `likes` WHERE `imageid` =?");
                                         $count->execute([$row['imageid']]);
                                         $l = $count->fetchall();
-                                        $count = $conn->prepare("SELECT * FROM `comments` WHERE `imageid` =?");
-                                        $count->execute($row['imageid']);
-                                        $c = $count->fetchall();
-                                        echo count($l)." likes ".count($c)."  comments";
+                                        echo count($l)." likes ";
                                     } catch (PDOExceptipn $e) {
                                         echo "failed == ".$e->getMessage();
                                     }

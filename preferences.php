@@ -46,23 +46,31 @@
             if($uname != null)
             { 
                
-                $sql = $conn->prepare("SELECT id FROM users WHERE  `user_name` = ? LIMIT 1");
+                $sql = $conn->prepare("SELECT id FROM `camagru`.`users` WHERE  `user_name` = ? LIMIT 1");
                 $sql->execute($uname);
                 $row = $sql->fetch();
                 if (empty($row) == true)
                 {
-                    // users username update
-                    $sql = $conn->prepare("UPDATE users SET `user_name` = ? WHERE `id` = ? ");
-                    $sql->execute([$uname,$id]); 
-                   //likes username update
-                    $sql = $conn->prepare("UPDATE likes SET `user_name` = ? WHERE `user_name` = ?");
-                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
-                    //comments username update
-                    $sql = $conn->prepare("UPDATE comments SET `user_name` = ? WHERE `user_name` = ?");
-                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
-                    //gallery username update
-                    $sq = $conn->prepare("UPDATE gallery SET `user_name` = ? WHERE `user_name` = ?");  
-                    $sql->execute([$uname,$_SESSION['login']['user_name']]);
+                    $n = $_SESSION['login']['user_name'];
+                    try 
+                    {
+                        //likes username update
+                       $sql = $conn->prepare("UPDATE `camagru`.`likes` SET `user_name` = ? WHERE `user_name` = ?");
+                      
+                       $sql->execute([$uname,$n]);
+                        
+                        //comments username update
+                        $sql = $conn->prepare("UPDATE `camagru`.`comments` SET `user_name` = ? WHERE `user_name` = ?");
+                        
+                        //gallery username update
+                        $sq = $conn->prepare("UPDATE `camagru`.`gallery` SET `user_name` = ? WHERE `user_name` = ?");  
+                        $sql->execute([$uname,$n]);
+                        // users username update
+                        $sql = $conn->prepare("UPDATE `camagru`.`users` SET `user_name` = ? WHERE `id` = ? ");
+                        $sql->execute([$uname,$id]); 
+                    } catch (PDOExeption $e) {
+                        echo "failer  ".$e->getMessage();
+                    }
                     $_SESSION['login']['user_name'] = $uname;
                 }
                 else

@@ -100,6 +100,7 @@ function c_reset()
 {
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
+    stickers  = " ";
 }
 
 function mylikes(id) {
