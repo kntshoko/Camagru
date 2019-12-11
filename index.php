@@ -65,8 +65,9 @@
                     }
                     echo "<table>";
                     $i = 0;
-                    
-                            while($result[$m] && $i < 5) {
+                    if(isset($result[0]))
+                    {
+                        while($result[$m] && $i < 5) {
                                 echo "<tr>";
                                 echo "<td>";
                                     ?>
@@ -79,6 +80,8 @@
                                 $m++;
                                 $i++;
                             }
+                    }
+                            
                         echo "</tr>";
                     echo "</table>";
                 ?>

@@ -24,7 +24,7 @@
                 $sql->execute([$token]);
                 $to = $email;
                 $subject = "CAMAGRU Password recreation";
-                $message = "click on the link below<br><a href ='http://localhost:8081/Camagru/confirmpassword.php?email=$email&token=$token'>confrm account</a>";
+                $message = "click on the link below<br><a href ='http://localhost:8080/Camagru/confirmpassword.php?email=$email&token=$token'>confrm account</a>";
                 $headers = 'From: nonreply'."\r\n";
                 $headers .= "MIME-Version: 1.0"."\r\n";
                 $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";

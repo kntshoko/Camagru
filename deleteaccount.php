@@ -1,6 +1,6 @@
 <?php
             session_start();
-            if(!$_SESSION['login'])
+            if(!isset($_SESSION['login']))
             {
                 header('Location: index.php');
                 exit();
@@ -28,7 +28,7 @@
         <div class = "cl">
             <a href="logedin.php">Go To Home</a>
         </div>      
-    <h1 align = center>
+    <h1>
             CAMAGRU
     </h1>
     <div class = "main">
