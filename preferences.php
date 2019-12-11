@@ -22,7 +22,7 @@
                 {
                     $email = $_POST['email'];
                     $sql = $conn->prepare("SELECT id FROM users WHERE  `email` = ? LIMIT 1");
-                    $sql->execute($_POST['email']);
+                    $sql->execute([$_POST['email']]);
                     $row = $sql->fetch();
                     if (empty($row) == true)
                     {
@@ -32,7 +32,7 @@
                         $sql->execute([$token,$id]);
                         $to = $email;
                         $subject = "CAMAGRU Update Email Confirmation";
-                        $message = "click on the link below<br><a href ='http://localhost:8081/Camagru/confirmemail.php?email=$email&id=$id&token=$token'>confrm account</a>";
+                        $message = "click on the link below<br><a href ='http://localhost:8080/Camagru/confirmemail.php?email=$email&id=$id&token=$token'>confrm account</a>";
                         $headers = 'From: nonreply'."\r\n";
                         $headers .= "MIME-Version: 1.0"."\r\n";
                         $headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
@@ -81,7 +81,7 @@
                     }
                 }
     
-                if(($_POST['notification'] == '1'))
+                if(isset($_POST['notification']) == '1')
                 {
                     
                     try {
@@ -92,7 +92,7 @@
                         $mg = $e->getMessage;
                     }
                 }
-                else if(($_POST['notification'] != '1'))
+                else if(isset($_POST['notification']) != '1')
                 {
                     $id =$_SESSION['login']['id'];
                     
@@ -113,7 +113,6 @@
                 $mg = "enter password to save changes";
             }
         }
-        
     }
 ?>
 <!DOCTYPE html>
