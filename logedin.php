@@ -69,8 +69,9 @@ require_once("config/database.php");
                    $i = 0;
                   
                             echo "<table>";
-
-                            while($result[$m] && $i < 5) {
+                            if (isset($result[$m]))
+                            {
+                                while($result[$m] && $i < 5) {
                                  echo "<tr>";
                                 echo "<td>";
                                     ?>
@@ -104,6 +105,8 @@ require_once("config/database.php");
                                 $m++;
                                 $i++;
                          }
+                        }
+                            
                         
                     echo "</table>";
                     
