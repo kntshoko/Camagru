@@ -31,6 +31,7 @@ function myfunction()
 
     document.getElementById('capture').addEventListener('click',function()
     {
+        stickers  = " ";
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext('2d');
         var canvas = document.getElementById('canvas');
@@ -53,11 +54,13 @@ function upload()
     xhr.onload = function()
     {
         console.log(xhr.status, xhr.responseText);
+        
     };
 
     xhr.open("POST", "t.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("image="+dataURL+"*"+stickers);
+    
 }
 
 function mydrw(input)

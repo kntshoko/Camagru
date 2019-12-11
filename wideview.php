@@ -74,7 +74,7 @@
         </div> 
             <a href="logout.php">LOGOUT</a>
         </div>      
-        <h1 align = center>
+        <h1>
             CAMAGRU
         </h1>
  <div class = "main">
@@ -84,12 +84,6 @@
         <div class="imagecontainer">
                  <img src="uploads/<?php echo $imgname?>" alt = "pimg" class ="postimage">
              </div>   
-             <h2> 
-                <?php 
-                    if($mg != "")
-                 echo $mg . "<br>";
-                 ?>
-            </h2>
              <div class = "commentcontainer">
                 <label for="comment"> send comment : </label> 
                 <br>

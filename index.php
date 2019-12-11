@@ -49,38 +49,41 @@
             <?php     
                     if (!isset($_POST['page']))
                     {
-                        $page = 0;
-                    }   
+                        $m = 0;
+                    } 
+                    else
+                        $m =   $_POST['page'];
                     
                     if (isset($_POST['next'])) {
-                        $page += 4;
+                        $m += 4;
                     }
                     if (isset($_POST['previous'])) {
-                        $page -= 4;
-                        if(isset($page) < 0) {
-                            $page = 0;
+                        $m -= 4;
+                        if($m < 0) {
+                            $m = 0;
                         }
                     }
                     echo "<table>";
-                    $i = 0; 
-                            while($result[$page] && isset($page) > -1 && $i < 5) {
+                    $i = 0;
+                    
+                            while($result[$m] && $i < 5) {
                                 echo "<tr>";
                                 echo "<td>";
                                     ?>
                                         <div class="imagecontainer">
-                                            <img src="<?php echo "uploads/".$result[$page]['imagename'];?>" alt = "pimg" class ="postimage">
+                                            <img src="<?php echo "uploads/".$result[$m]['imagename'];?>" alt = "pimg" class ="postimage">
                                         </div>   
                                         <?php
                                 echo "</td>";
                                 echo "</tr>";
-                                $page++;
+                                $m++;
                                 $i++;
                             }
                         echo "</tr>";
                     echo "</table>";
                 ?>
             </div>
-            <form action="index.php?page=<?php echo $page?>" method="post">
+            <form action="index.php?page=<?php echo $m?>" method="post">
                 <input type="submit" name = "next" value="next">
             </form>
         </div>
